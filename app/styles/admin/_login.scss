@@ -1,0 +1,57 @@
+.login{
+  width: 60%;
+  max-width: 400px;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  position: absolute;
+  margin: auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  overflow: hidden;
+
+  font-size: 20px;
+
+  header{
+    height: 50px;
+    background: #000;
+    text-align: center;
+    img{
+      width: 60%;
+      height: auto;
+    }
+  }
+
+  .login-form{
+    padding: 20px;
+  }
+  label{
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+  }
+
+  input{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #000;
+  }
+
+  button{
+    border: 0;
+    display: inline-block;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: 'pn';
+    text-transform: uppercase;
+    color: #fff;
+    background: #000;
+    margin: 15px 0;
+    &:hover{
+      color: #ffff33;
+    }
+
+  }
+}

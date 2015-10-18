@@ -1,0 +1,92 @@
+<div class="customers container">
+  <h2>Clientes</h2>
+</div>
+
+
+<!--List all customers-->
+<div class="list-customers" ng-show="!customerDetail">
+  <header>
+    <h2>Clientes</h2>
+  </header>
+  <div class="container">
+    <table>
+
+      <tbody>
+      <tr ng-repeat="customer in customers">
+
+        <td><a href="{{locationURL}}{{customer.id}}" title="Detalle del Cliente">{{customer.name}}</a></td>
+        <td class="txt-rg"><a class="btn" href="{{locationURL}}{{customer.id}}" title="Detalle del Cliente">Ver Detalle</a></td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+<!--Show Customer Info-->
+<div class="customer" ng-show="customerDetail">
+  <header>
+    <h2>{{customer.name}}</h2>
+  </header>
+
+  <div class="container">
+    <div class="list-locations" ng-show="listLocations">
+      <table>
+        <thead>
+        <tr>
+          <th>Tienda</th>
+          <th>Área</th>
+          <th>Encuesta</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="location in customer.locations">
+
+          <td>{{location.store}}</td>
+          <td>{{location.area}}</td>
+          <td>{{customer.survey[0].name}}</td>
+
+          <td class="txt-rg"><a class="btn" ng-class="{'disable' : location.answers.length == 0}" href="" ng-click="getAnswersByLocation(location.id)" title="Resultados de la Encuesta">Ver Resultados<span class="bubble-results">{{location.answers.length}}</span></a></td>
+
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div id="exportTable" class="list-answers" ng-show="showAnswers">
+      <a class="close" ng-click="hideAnswers()" href="">Regresar</a>
+      <a class="export" ng-click="tableToExcel('surveyAnswers', 'Reporte')" href="">Exportar Reporte</a>
+      <table id="surveyAnswers">
+        <thead style="display: none">
+        <tr >
+          <th>{{customer.name}}</th>
+        </tr>
+        </thead>
+
+        <tr>
+          <th ng-repeat="question in surveyQuestions">{{question.question}}</th>
+          <th>Fecha y Hora</th>
+        </tr>
+
+        <tr ng-repeat="groupAnswer in answersByLocation">
+
+          <td ng-repeat="answer in groupAnswer">
+
+            {{answer.answer}}
+          </td>
+          <td ng-repeat="date in groupAnswer" ng-if="$index == 0">
+
+            {{date.Date}}
+          </td>
+
+        </tr>
+      </table>
+    </div>
+
+
+
+  </div>
+
+</div>

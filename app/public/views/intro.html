@@ -1,0 +1,12 @@
+<div class="intro">
+  <div class="error animated zoomIn" ng-show="error">
+    <div class="txt">
+      <p>{{errorMsg}}</p>
+      <a ng-click="setCookie()" ng-show="shortCuteAlert">Listo</a>
+    </div>
+
+  </div>
+  <div class="loading" ng-class="{'hide' : loaded == true}"><img src="../../public/images/loader.gif" alt=""/></div>
+  <div class="poweredby"><img src="../../public/images/powered-by-switch-tabs.png" alt=""/></div>
+
+</div>

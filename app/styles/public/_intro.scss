@@ -1,0 +1,56 @@
+.intro{
+  text-align: center;
+
+  .error{
+    position: fixed;
+    display: table;
+    width: 60%;
+    height: 30vh;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.8);
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    .txt{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    a{
+      font-size: 18px;
+      background-color: #37a645;
+      font-family: 'kelson_sansregular', sans-serif;
+      padding: 10px 30px;
+      cursor: pointer;
+    }
+  }
+
+  .loading{
+    width: 100vw;
+    height: 50vh;
+    margin-top: 20vh;
+    img{
+      width: 100%;
+      max-width: 198px;
+      height: auto;
+    }
+  }
+  .poweredby{
+    width: 100vw;
+    height: 20vh;
+    margin-bottom: 10vh;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    img{
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+    }
+  }
+}

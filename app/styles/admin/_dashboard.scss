@@ -1,0 +1,82 @@
+.dashboard{
+  padding-bottom: 20px;
+  overflow: hidden;
+  .main-header{
+    padding: 5px 20px;
+    background: #000;
+    overflow: hidden;
+    margin-bottom: 0;
+    .logo{
+      float: left;
+      img{
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    .user{
+      color: #fff;
+      float: right;
+
+      .user-name{
+        color: #ffff33;
+      }
+    }
+  }
+
+  .aside-nav{
+    width: 20%;
+    min-height: 100vh;
+    background: #1c1c1c ;
+    background-image: -o-linear-gradient(left,#1c1c1c 0,#171717 100%);
+    background-image: linear-gradient(to right,#1c1c1c 0,#171717 100%);
+    float: left;
+//    box-shadow: inset 0 -10px 5px rgba(0,0,0,0.7);
+
+    ul{
+      padding: 20px 0;
+      margin: 0;
+
+      li{
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        border-top: 1px solid rgba(255,255,255,0.05);
+
+
+      }
+
+      a{
+        width: 100%;
+        display: inline-block;
+        color: #919496;
+        text-decoration: none;
+        padding: 10px 20px;
+        position: relative;
+        &:before{
+          content: "";
+          width: 5px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: transparent;
+          transition: all .5s;
+        }
+        &:hover{
+          &:before{
+
+            background-color: #ffff33;
+          }
+          color: #fff;
+        }
+      }
+
+    }
+  }
+  .main-content{
+    width: 80%;
+    min-height: 100vh;
+    float: left;
+    padding: 20px;
+    background: #f8f8f8;
+  }
+}
