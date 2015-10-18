@@ -77,12 +77,10 @@
 
   .aside-nav{
     & > ul > li{
-      &:hover, &.active{
-        & > a{
-          color: #fff;
-          &:before{
-            background-color: #ffff33;
-          }
+      &:hover > a, &.active > a, & > a.active{
+        color: #fff;
+        &:before{
+          background-color: #ffff33;
         }
       }
     }
@@ -96,7 +94,7 @@
           color: #fff;
 
         }
-        &.active, a:hover{
+        &.active, a:hover, a.active{
           color: $yellow;
         }
       }
@@ -120,7 +118,7 @@
         transition: all .5s;
       }
 
-      &:hover{
+      &:hover, &.active{
         color: #fff;
       }
       i{
