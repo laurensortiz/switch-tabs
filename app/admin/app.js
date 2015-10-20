@@ -17,9 +17,12 @@ angular
     'ngTouch',
     'ngCookies',
     'ng-fastclick',
-    'ng-breadcrumbs'
+    'ng-breadcrumbs',
+    'ngTable'
   ])
   .config(function ($routeProvider, $locationProvider) {
+
+
     $locationProvider.html5Mode(true);
     $routeProvider
       //.when('/', {
@@ -37,6 +40,12 @@ angular
         controllerAs  : 'customers',
         label         : 'Clientes'
       })
+      .when('/customer/:id', {
+        templateUrl   : 'customers/customer.html',
+        controller    : 'customerCtrl',
+        controllerAs  : 'customer',
+        label         : 'Cliente'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -46,5 +55,5 @@ angular
   });
 
 var switch_tabs_config = {
-  api_server : 'http://switchtabs/api/'
+  api_server : 'http://localhost/api/'
 }

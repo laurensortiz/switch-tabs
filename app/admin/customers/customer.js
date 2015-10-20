@@ -1,23 +1,35 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('customersCtrl', ['$scope', '$location', '$window', 'NgTableParams', 'customers', function ( $scope, $location, $window, NgTableParams, customers ) {
+  .controller('customerCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'customers', function ( $scope, $location, $window, $routeParams, NgTableParams, customers ) {
 
-    var self = this;
+    var self = this,
+        currentCustomer = $routeParams.id;
 
     $scope.showCreateCutomerForm = false;
     $scope.newCustomerName = '';
 
-    var customersData = [];
+    var customersLocationData = [];
+    
+    
+
+    //Fetch Customer
+    console.log(currentCustomer);
+
+    customers.getCustomer(currentCustomer).then(function (customer) {
+
+      $scope.customerName = customer.data.name;
+
+      //Fetch Customer Locations
+      listLocationByCustomer();
+    });
 
 
-    //Fetch all Customer
-    var listCustomers = function() {
-      customers.getAllCustomers().then(function (customers) {
+    var listLocationByCustomer = function() {
+      customers.getCustomerLocations(currentCustomer).then(function (locations) {
 
-        customersData = customers.data.customer;
-
-
+        console.log(locations);
+        customersLocationData = locations.data;
 
         $scope.tableParams = new NgTableParams({
           page : 1,
@@ -28,13 +40,13 @@ angular.module('switchTabsAppAdmin')
         }, {
           counts : '',
           defaultSort : 'asc',
-          data : customersData
+          data : customersLocationData
         });
 
       });
     };
 
-    listCustomers();
+
 
 
 
@@ -42,7 +54,7 @@ angular.module('switchTabsAppAdmin')
       customers.addCustomer({'name' : $scope.newCustomerName}).then(function (response) {
         $scope.showCreateCutomerForm = false;
         $scope.newCustomerName = '';
-        listCustomers();
+        listLocationByCustomer();
 
       });
     };
@@ -53,7 +65,7 @@ angular.module('switchTabsAppAdmin')
 
       if ( confirmDelete ) {
         customers.deleteCustomer(customerID).then(function (response) {
-          listCustomers();
+          listLocationByCustomer();
 
         });
 

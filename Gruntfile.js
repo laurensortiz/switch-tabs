@@ -67,12 +67,22 @@ module.exports = function (grunt) {
       }
     },
 
+    dt_config_transformation: {
+      debug: {
+        options: {
+          source: '<%= yeoman.app %>/web.config',
+          transform: '<%= yeoman.app %>/web.Debug.config',
+          destination: '<%= yeoman.dist %>/web.config'
+        }
+      }
+    },
+
     // The actual grunt server settings
     connect: {
       options: {
-        port: 1103,
+        port: 8080,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'switchtabs',
+        hostname: 'localhost',
         livereload: 35729
       },
       livereload: {
@@ -448,7 +458,8 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
-      'watch'
+      'watch',
+      'dt_config_transformation'
     ]);
   });
 

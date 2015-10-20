@@ -6,4 +6,6 @@ angular.module('switchTabsAppAdmin')
     $scope.breadcrumbs = breadcrumbs;
 
 
+
+
   }]);

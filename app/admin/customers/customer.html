@@ -1,24 +1,26 @@
 <div class="customers container">
   <header>
-    <h2>Clientes</h2>
+    <h2>{{customerName}}</h2>
   </header>
   <div class="box-cont">
     <table ng-table="tableParams" class="table table-condensed table-bordered table-striped table-w-actions">
 
-      <tr ng-repeat="customer in $data">
+      <tr ng-repeat="location in $data">
         <td title="'ID'" sortable="'id'">
-          <a ng-href="customers/{{customer.id}}" title="ID">{{customer.id}}</a>
+          <a ng-href="customers/{{location.id}}" title="ID">{{location.id}}</a>
         </td>
-        <td title="'Nombre'" sortable="'name'">
-          <a ng-href="customers/{{customer.id}}" title="Detalle del Cliente">{{customer.name}}</a>
+        <td title="'Tienda'" sortable="'store'">
+          <a ng-href="customers/{{location.id}}" title="Detalle de la Tienda">{{location.store}}</a>
+        </td>
+        <td title="'Área'">
+          {{location.area}}
         </td>
         <td class="txt-a-r" title="'Acciones'" >
           <div class="actions-links">
-            <a ng-href="/admin/customer/{{customer.id}}" title="Detalle del Cliente"><i class="fa fa-list-alt"></i></a>
-            <a ng-href="/admin/customer/{{customer.id}}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
-            <a ng-click="deleteCustomer(customer.id)" title="Borrar"><i class="fa fa-trash-o"></i></a>
+            <a ng-href="/admin/customer/{{location.id}}" title="Detalle de la Tienda"><i class="fa fa-list-alt"></i></a>
+            <a ng-href="/admin/customer/{{location.id}}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+            <a ng-click="deleteCustomer(location.id)" title="Borrar"><i class="fa fa-trash-o"></i></a>
           </div>
-
         </td>
       </tr>
     </table>

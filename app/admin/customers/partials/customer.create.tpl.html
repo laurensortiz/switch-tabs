@@ -1,0 +1,16 @@
+<form ng-submit="$parent.saveNewCustomer()" method="post" name="newCustomer" class="new-customer-form">
+  <table>
+    <tr>
+      <td>
+        <input type="text" value="" placeholder="Nombre del Cliente" ng-model="$parent.newCustomerName" name="name" required />
+      </td>
+      <td>
+        <div class="actions-links">
+          <button class="save" type="submit" title="Guardar"><i class="fa fa-check"></i></button>
+          <button class="delete" type="reset" ng-click="$parent.showCreateCutomerForm = false;" title="Cancelar"><i class="fa fa-times"></i></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</form>

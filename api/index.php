@@ -1,9 +1,11 @@
 <?php
+
 header( 'Access-Control-Allow-Origin: *' );
-//header( 'Content-Type: text/html; charset=utf-8' );
-header( 'Access-Control-Allow-Headers: Content-Type' );
+header( 'Content-Type: text/html; charset=utf-8' );
+header( 'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept' );
 
 header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
+
 require 'Slim/Slim.php';
 
 $app = new Slim();
@@ -11,7 +13,7 @@ $app = new Slim();
 //Global
 $app->get('/location/:id/customer/:customerID',	'getLocationByCustomer');
 
-$app->get('/customer', 'getCustomers');
+$app->get('/customers', 'getCustomers');
 $app->get('/customer/:id',	'getCustomer');
 $app->get('/survey/customer/:customerID',	'getSurveyByCustomer');
 $app->get('/survey/:id/',	'getSurveyQuestions');
@@ -19,12 +21,12 @@ $app->post('/survey/save',	'saveAnswers');
 
 //Admin
 $app->get('/admin', 'login');
-$app->get('/customers', 'getCustomers');
 $app->get('/customer/:id/locations', 'getCustomerLocations');
 $app->get('/customer/:id/survey', 'getCustomerSurvey');
 $app->get('/survey/location/:id/answers/',	'getSurveyAnswersByLocation');
 
-
+$app->post('/customer/add', 'addCustomer');
+$app->get('/customer/delete/:id/', 'deleteCustomer');
 
 //$app->get('/wines/search/:query', 'findByName');
 //$app->post('/survey', 'addWine');
@@ -35,7 +37,7 @@ $app->run();
 
 function getCustomers() {
 
-	$sql = "select * FROM customer ORDER BY name";
+	$sql = "select * FROM customer";
 	try {
 
 		$db = getConnection();
@@ -166,6 +168,43 @@ function getSurveyAnswersByLocation($id) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
+//
+function addCustomer() {
+  error_log('addCustomer\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $customerName = json_decode($request->getBody());
+
+
+  $sql = "INSERT INTO customer (`name`) VALUES (:customer)";
+
+
+  try {
+    $db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindValue(":customer", $customerName->name);
+
+		$stmt->execute();
+		$db = null;
+		//echo json_encode($customerName);
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
+//
+function deleteCustomer($id) {
+	$sql = "DELETE FROM customer WHERE id=:id";
+	try {
+		$db = getConnection();
+		$stmt = $db->prepare($sql);
+		$stmt->bindParam("id", $id);
+		$stmt->execute();
+		$db = null;
+	} catch(PDOException $e) {
+		echo '{"error":{"text":'. $e->getMessage() .'}}';
+	}
+}
+
 //
 function saveAnswers() {
 	error_log('addWine\n', 3, '/var/tmp/php.log');

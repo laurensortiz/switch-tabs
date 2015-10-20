@@ -23,7 +23,6 @@ angular.module('switchTabsAppAdmin')
       
       scope.$watch('location.path()', function (newPath) {
         if ( newPath === path ) {
-          console.log('yes');
           element.addClass(activeClass);
         }
         else {
