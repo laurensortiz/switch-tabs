@@ -16,6 +16,7 @@
 
 
   .logo {
+
     padding: 10px 35px;
     background-color: #000;
     img {
@@ -26,6 +27,7 @@
   }
 
   .user-logged-in{
+
     min-height: 100px;
     position: relative;
     display: table;
@@ -140,4 +142,9 @@
 
 
   }
+}
+
+//Temp
+.logo,  .main-aside .user-logged-in{
+  display: none;
 }

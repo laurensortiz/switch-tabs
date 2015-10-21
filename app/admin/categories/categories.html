@@ -1,0 +1,33 @@
+<div class="categories container">
+  <header>
+    <h2>Categorías</h2>
+  </header>
+  <div class="box-cont">
+    <table ng-table="tableParams" class="table table-condensed table-bordered table-striped table-w-actions">
+
+      <tr ng-repeat="category in $data">
+        <td title="'ID'" sortable="'id'">
+          <a ng-href="category/{{category.id}}" title="ID">{{category.id}}</a>
+        </td>
+        <td title="'Nombre'" sortable="'name'">
+          <a ng-href="category/{{category.id}}" title="Detalle del Cliente">{{category.name}}</a>
+        </td>
+        <td class="txt-a-r" title="'Acciones'" >
+          <div class="actions-links">
+            <a ng-href="/admin/category/{{category.id}}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+            <a ng-click="deleteCategory(category.id)" title="Borrar"><i class="fa fa-trash-o"></i></a>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+    <div ng-show="showCreateCategoryForm">
+      <ng-include src="'categories/partials/category.create.tpl.html'"></ng-include>
+    </div>
+
+  </div>
+</div>
+
+<!--Create Customer Btn-->
+<button class="add-btn" ng-click="showCreateCategoryForm = true;"><i class="fa fa-plus"></i></button>
+<!--/Create Customer Btn-->

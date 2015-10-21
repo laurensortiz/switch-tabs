@@ -13,7 +13,7 @@
     border: 0;
   }
 }
-a:focus,input:focus,textarea:focus {outline:none;}
+a:focus,input:focus,textarea:focus, select:focus {outline:none;}
 ::-moz-focus-inner {border:0;}
 button:focus{
   outline: none
@@ -29,7 +29,7 @@ body{
   background-color: #1c1c1c;
 }
 
-h2,h3{
+h2, h3, h4{
   font-family: 'kelson_sansregular',sans-serif;
   font-weight: normal;
   margin: .5em 0;
@@ -37,7 +37,7 @@ h2,h3{
 
 }
 
-input, textarea{
+input, textarea, select{
   font-family: 'kelson_sansregular',sans-serif;
 }
 
@@ -85,6 +85,9 @@ a{
 .txt-a-r{
   text-align: right;
 }
+.txt-a-c{
+  text-align: center;
+}
 .txt-lg{
   text-align: left;
 }
@@ -93,14 +96,24 @@ a{
   background: #fff;
   box-shadow: 0 2px 2px rgba(0,0,0,.1);
   margin: 20px 0;
+
+  &.no-p{
+    padding: 0;
+  }
 }
+
 main{
   padding-left: 260px;
 }
+
 .container{
   position: relative;
   padding: 20px;
 
+}
+
+.main-block{
+  @include clearfix;
 }
 
 .content-box{
@@ -122,6 +135,28 @@ main{
   min-height: 100vh;
 }
 
+.aside{
+  padding-right: 0;
+  h4{
+    margin: 0;
+    padding: 15px;
+    color: #bbb;
+    border-bottom: 1px solid #eee;
+
+    i{
+      float: right;
+    }
+  }
+
+  .btn{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .container-fluid{
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+}
 tbody{
   tr{
     border-top: 1px solid #F0F0F0;
@@ -131,7 +166,11 @@ tbody{
     }
   }
 }
-
+.warning{
+  color: #fff;
+  padding: 5px;
+  background-color: #ffab40;
+}
 .actions-links{
   float: right;
   & *{
@@ -176,23 +215,51 @@ tbody{
 
 }
 .btn, .close,.export{
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: #000;
-  color: #fff;
   display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 6px 16px;
+  font-size: 14px;
+  line-height: 1.846;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #666;
+  border: 0;
   position: relative;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+  transition: all .4s cubic-bezier(0,0,.2,1);
+  text-transform: uppercase;
+  background-color: #fff;
 
   &:hover{
     text-decoration: none;
-    color: $yellow;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.18),0 4px 7px 0 rgba(0,0,0,.15);
   }
 
-  &.disable{
+  &:disabled{
     cursor: default;
     pointer-events: none;
-    background-color: #cccdcf;
+    background-color: #cccdcf!important;
 
+  }
+
+  &.secondary{
+    color: #fff;
+    background-color: #1b1b1b;
+  }
+  &.green-th{
+    background-color: #8bc34a;
+  }
+  &.red-th{
+    background-color: #F44336;
+    color: #fff;
   }
 }
 
@@ -241,5 +308,103 @@ tbody{
 
   &:hover{
     box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+  }
+}
+
+form{
+  input[type="text"], select{
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-box-shadow: inset 0 -1px 0 #ddd;
+    box-shadow: inset 0 -1px 0 #ddd;
+    font-size: 16px;
+    height: 37px;
+    width: 100%;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    &.ng-invalid.ng-dirty{
+      box-shadow: inset 0 -1px 0 #F44336;
+    }
+  }
+
+  header{
+    @include clearfix;
+    span{
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: -4px;
+      display: block;
+    }
+    i{
+      width: 5%;
+      font-size: 24px!important;
+      float: left;
+    }
+
+    h2, h3{
+      @include clearfix;
+    }
+
+    h2 input[type="text"],
+    h3 select{
+      background-color: transparent;
+      width: 95%;
+      float: left;
+      box-shadow: none;
+    }
+
+    h2{
+      input[type="text"]{
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+    h3 select{
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+
+  label{
+    width: 100%;
+    i{
+      color: #bbb;
+    }
+    &:hover{
+      i{
+        color: #000;
+      }
+    }
+  }
+
+  h3{
+    color: #9b9b9b;
+  }
+
+  button[type="submit"]{
+    margin: 20px 0;
+  }
+
+  select{
+    background-color: #fff;
+  }
+
+  //<i>
+  .fa-circle-o-notch{
+    display: none;
+  }
+
+  &.processing{
+    button[type="submit"]{
+      i{
+        display: none;
+
+        &.fa-circle-o-notch{
+          display: inline-block;
+        }
+      }
+    }
   }
 }

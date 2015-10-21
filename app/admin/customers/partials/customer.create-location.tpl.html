@@ -1,8 +1,11 @@
-<form ng-submit="$parent.saveNewCustomer()" method="post" name="newCustomer" class="create-form">
+<form ng-submit="$parent.saveNewLocation()" method="post" name="newLocation" class="create-form">
   <table>
     <tr>
       <td>
-        <input type="text" value="" placeholder="Nombre del Cliente" ng-model="$parent.newCustomerName" name="name" required />
+        <input type="text" value="" placeholder="Nombre de la Tienda" ng-model="$parent.newLocationName" name="store" required />
+      </td>
+      <td>
+        <input type="text" value="" placeholder="Incicar Área" ng-model="$parent.newLocationArea" name="area" required />
       </td>
       <td>
         <div class="actions-links">

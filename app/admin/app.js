@@ -46,6 +46,18 @@ angular
         controllerAs  : 'customer',
         label         : 'Cliente'
       })
+      .when('/categories/', {
+        templateUrl   : 'categories/categories.html',
+        controller    : 'categoriesCtrl',
+        controllerAs  : 'categories',
+        label         : 'Categorías'
+      })
+      .when('/survey/new', {
+        templateUrl   : 'surveys/survey-new.html',
+        controller    : 'surveyNewCtrl',
+        controllerAs  : 'survey',
+        label         : 'Encuesta'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -55,5 +67,5 @@ angular
   });
 
 var switch_tabs_config = {
-  api_server : 'http://localhost/api/'
+  api_server : '/api/'
 }

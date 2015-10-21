@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('customerCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'customers', function ( $scope, $location, $window, $routeParams, NgTableParams, customers ) {
+  .controller('surveysCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys ) {
 
     var self = this,
       customersLocationData = [],

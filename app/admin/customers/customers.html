@@ -7,10 +7,10 @@
 
       <tr ng-repeat="customer in $data">
         <td title="'ID'" sortable="'id'">
-          <a ng-href="customers/{{customer.id}}" title="ID">{{customer.id}}</a>
+          <a ng-href="customer/{{customer.id}}" title="ID">{{customer.id}}</a>
         </td>
         <td title="'Nombre'" sortable="'name'">
-          <a ng-href="customers/{{customer.id}}" title="Detalle del Cliente">{{customer.name}}</a>
+          <a ng-href="customer/{{customer.id}}" title="Detalle del Cliente">{{customer.name}}</a>
         </td>
         <td class="txt-a-r" title="'Acciones'" >
           <div class="actions-links">

@@ -1,0 +1,71 @@
+.create-question{
+
+  label{
+    display: block;
+    margin-bottom: 15px;
+  }
+
+
+}
+.step-2{
+  header{
+    margin-bottom: 0;
+  }
+}
+
+.sm{
+  font-size: 14px;
+  color: #bbb;
+}
+
+.question-list{
+  @include clearfix;
+  counter-reset: my-badass-counter;
+
+  padding-left: 0;
+  li{
+    position: relative;
+    list-style: none;
+    padding: 10px 10px 10px 22px;
+    overflow: hidden;
+    &:before{
+      content: counter(my-badass-counter);
+      counter-increment: my-badass-counter;
+      position: absolute;
+      left: 0;
+      top: 13px;
+      font-size: 10px;
+      background-color: $gray-primary;
+      min-width: 15px;
+      height: 16px;
+      border-radius: 15px;
+      text-align: center;
+      line-height: 17px;
+      color: #fff;
+    }
+  }
+
+  span{
+    display: block;
+  }
+
+  //Show the question type in some cool way ;)
+  .fa-circle{
+    font-size: 15px;
+    margin-right: 5px;
+
+    &:nth-child(1){
+      color: $question-green;
+    }
+    &:nth-child(2){
+      color: $question-red;
+    }
+    &:nth-child(3){
+      color: $question-orange;
+    }
+    &:nth-child(4){
+      color: $question-yellow;
+    }
+  }
+
+}

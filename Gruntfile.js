@@ -6,7 +6,7 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
-
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn'
   });
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // Configurable paths for the application
   var appConfig = {
@@ -80,27 +81,58 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 8080,
+        port: 1103,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: 'switchtabs',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/api',
+          host: 'switchtabs',
+          port: 80,
+          https: false,
+          xforward: false,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          },
+          hideHeaders: ['x-removed-header']
+        }
+      ],
       livereload: {
         options: {
           open: true,
+          //middleware: function (connect) {
+          //  return [
+          //    proxySnippet,
+          //    connect.static('.tmp'),
+          //    connect().use(
+          //      '/bower_components',
+          //      connect.static('./bower_components')
+          //    ),
+          //    connect().use(
+          //      '/app/styles',
+          //      connect.static('./app/styles')
+          //    ),
+          //    connect.static(appConfig.app)
+          //  ];
+          //}
           middleware: function (connect) {
-            return [
+            var middlewares = [];
+            // Setup the proxy
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+            // Serve static files
+            middlewares.push(
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
               connect.static(appConfig.app)
-            ];
+            );
+
+            return middlewares;
           }
         }
       },
@@ -457,6 +489,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
+      'configureProxies:server',
       'connect:livereload',
       'watch',
       'dt_config_transformation'

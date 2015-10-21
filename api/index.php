@@ -6,6 +6,9 @@ header( 'Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, A
 
 header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
 
+//header( 'Content-Type: text/html; charset=utf-8' );
+//header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+
 require 'Slim/Slim.php';
 
 $app = new Slim();
@@ -21,6 +24,7 @@ $app->post('/survey/save',	'saveAnswers');
 
 //Admin
 $app->get('/admin', 'login');
+
 $app->get('/customer/:id/locations', 'getCustomerLocations');
 $app->get('/customer/:id/survey', 'getCustomerSurvey');
 $app->get('/survey/location/:id/answers/',	'getSurveyAnswersByLocation');
@@ -28,12 +32,31 @@ $app->get('/survey/location/:id/answers/',	'getSurveyAnswersByLocation');
 $app->post('/customer/add', 'addCustomer');
 $app->get('/customer/delete/:id/', 'deleteCustomer');
 
+$app->post('/location/add', 'addLocation');
+$app->get('/location/delete/:id/', 'deleteLocation');
+
+$app->get('/categories', 'getCategories');
+$app->get('/category/:id',	'getCategory');
+$app->post('/category/add', 'addCategory');
+$app->get('/category/delete/:id/', 'deleteCategory');
+
+$app->get('/surveys', 'getSurveys');
+$app->get('/survey/:id',	'getSurvey');
+$app->post('/survey/add', 'addSurvey');
+$app->get('/survey/delete/:id/', 'deleteSurvey');
+$app->get('/survey/customer/:id/', 'getSurveysByCustomer');
+$app->post('/survey/questions/save', 'saveSurveyQuestions');
+
 //$app->get('/wines/search/:query', 'findByName');
 //$app->post('/survey', 'addWine');
 //$app->put('/wines/:id', 'updateWine');
 //$app->delete('/wines/:id',	'deleteWine');
 
 $app->run();
+
+//////////////////////////////
+/// CUSTOMER ////////////////
+////////////////////////////
 
 function getCustomers() {
 
@@ -67,6 +90,47 @@ function getCustomer($id) {
 	}
 }
 
+function addCustomer() {
+  error_log('addCustomer\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $customerName = json_decode($request->getBody());
+
+
+  $sql = "INSERT INTO customer (`name`) VALUES (:customer)";
+
+
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(":customer", $customerName->name);
+
+    $stmt->execute();
+    $db = null;
+    //echo json_encode($customerName);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+//
+function deleteCustomer($id) {
+  $sql = "DELETE FROM customer WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = null;
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+//////////////////////////////
+/// LOCATION ////////////////
+////////////////////////////
+
+
 function getCustomerLocations($id) {
   $sql = "SELECT * FROM location WHERE idCustomer=:id";
   try {
@@ -78,22 +142,6 @@ function getCustomerLocations($id) {
 
     $db = null;
     echo json_encode($customerLocation);
-  } catch(PDOException $e) {
-    echo '{"error":{"text":'. $e->getMessage() .'}}';
-  }
-}
-
-function getCustomerSurvey($id) {
-  $sql = "SELECT * FROM survey WHERE customerID=:id";
-  try {
-    $db = getConnection();
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam("id", $id);
-    $stmt->execute();
-    $customerSurvey = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-    $db = null;
-    echo json_encode($customerSurvey);
   } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
@@ -116,23 +164,260 @@ function getLocationByCustomer($locationID, $customerID) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
-//
 
-function getSurveyByCustomer( $customerID ) {
-  $sql = "SELECT id FROM survey WHERE customerID =:customerID AND status = 'active'";
+function addLocation() {
+  error_log('addLocation\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $location = json_decode($request->getBody());
+
+  $sql = "INSERT INTO location (`idCustomer`, `store`, `area`) VALUES (:idCustomer, :store, :area)";
+
   try {
     $db = getConnection();
     $stmt = $db->prepare($sql);
-    $stmt->bindParam("customerID", $customerID);
+    $stmt->bindValue(":idCustomer", $location->idCustomer);
+    $stmt->bindValue(":store", $location->store);
+    $stmt->bindValue(":area", $location->area);
     $stmt->execute();
-    $surveyID = $stmt->fetchObject();
     $db = null;
-
-    echo json_encode($surveyID);
+    echo json_encode($location);
   } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
+
+function deleteLocation($id) {
+  $sql = "DELETE FROM location WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = null;
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+//////////////////////////////
+/// CATEGORY ////////////////
+////////////////////////////
+
+function getCategories() {
+
+  $sql = "select * FROM category";
+  try {
+
+    $db = getConnection();
+    $stmt = $db->query($sql);
+
+    $customers = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $db = null;
+    echo '{"category": ' . json_encode($customers) . '}';
+    //echo json_encode($customers);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+//
+function getCategory($id) {
+  $sql = "SELECT * FROM category WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $customer = $stmt->fetchObject();
+    $db = null;
+    echo json_encode($customer);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function addCategory() {
+  error_log('addCategory\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $category = json_decode($request->getBody());
+
+  $sql = "INSERT INTO category (`name`) VALUES (:name)";
+
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(":name", $category->name);
+    $stmt->execute();
+    $db = null;
+    echo json_encode($category);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function deleteCategory($id) {
+  $sql = "DELETE FROM category WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = null;
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+
+//////////////////////////////
+/// SURVEY //////////////////
+////////////////////////////
+
+
+function getSurveys() {
+
+  $sql = "select * FROM survey";
+  try {
+
+    $db = getConnection();
+    $stmt = $db->query($sql);
+
+    $customers = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $db = null;
+    echo '{"survey": ' . json_encode($customers) . '}';
+    //echo json_encode($customers);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+//
+function getSurvey($id) {
+  $sql = "SELECT * FROM survey WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $customer = $stmt->fetchObject();
+    $db = null;
+    echo json_encode($customer);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function addSurvey() {
+  error_log('addSurvey\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $survey = json_decode($request->getBody());
+
+  $sql = "INSERT INTO survey (`customerID`,`name`,`status`) VALUES (:customerID, :name, :status)";
+
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(":customerID", $survey->customerID);
+    $stmt->bindValue(":name", $survey->name);
+    $stmt->bindValue(":status", $survey->status);
+    $stmt->execute();
+    $db = null;
+    echo '{"status":"success"}';
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function deleteSurvey($id) {
+  $sql = "DELETE FROM survey WHERE id=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = null;
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function getSurveysByCustomer($id) {
+  $sql = "SELECT * FROM survey WHERE customerID=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $customerSurvey = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $db = null;
+    echo json_encode($customerSurvey);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function saveSurveyQuestions() {
+  error_log('saveSurveyQuestions\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $questions = json_decode($request->getBody());
+
+  $sql = "INSERT INTO questions (`surveyID`, `question`, `categoryID`, `type`) VALUES ";
+  $qPart = array_fill(0, count($questions), "(?, ?, ?, ?)");
+  $sql .= implode(",",$qPart);
+
+  $i = 1;
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+
+    foreach($questions as $item) { //bind the values one by one
+
+      $stmt->bindValue($i++, $item->surveyID);
+      $stmt->bindValue($i++, $item->question);
+      $stmt->bindValue($i++, $item->categoryID);
+      $stmt->bindValue($i++, $item->type);
+
+    }
+
+    $stmt->execute();
+
+    $db = null;
+    echo '{"status":"success"}';
+  } catch(PDOException $e) {
+    error_log($e->getMessage(), 3, '/var/tmp/php.log');
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+
+
+
+
+
+//////////////////////////////
+/// OLD /////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////
+
+
+
+
+
+
+
+//function getSurveyByCustomer( $customerID ) {
+//  $sql = "SELECT id FROM survey WHERE customerID =:customerID AND status = 'active'";
+//  try {
+//    $db = getConnection();
+//    $stmt = $db->prepare($sql);
+//    $stmt->bindParam("customerID", $customerID);
+//    $stmt->execute();
+//    $surveyID = $stmt->fetchObject();
+//    $db = null;
+//
+//    echo json_encode($surveyID);
+//  } catch(PDOException $e) {
+//    echo '{"error":{"text":'. $e->getMessage() .'}}';
+//  }
+//}
 
 
 function getSurveyQuestions($id) {
@@ -168,42 +453,6 @@ function getSurveyAnswersByLocation($id) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
-//
-function addCustomer() {
-  error_log('addCustomer\n', 3, '/var/tmp/php.log');
-  $request = Slim::getInstance()->request();
-  $customerName = json_decode($request->getBody());
-
-
-  $sql = "INSERT INTO customer (`name`) VALUES (:customer)";
-
-
-  try {
-    $db = getConnection();
-		$stmt = $db->prepare($sql);
-		$stmt->bindValue(":customer", $customerName->name);
-
-		$stmt->execute();
-		$db = null;
-		//echo json_encode($customerName);
-	} catch(PDOException $e) {
-		echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
-}
-
-//
-function deleteCustomer($id) {
-	$sql = "DELETE FROM customer WHERE id=:id";
-	try {
-		$db = getConnection();
-		$stmt = $db->prepare($sql);
-		$stmt->bindParam("id", $id);
-		$stmt->execute();
-		$db = null;
-	} catch(PDOException $e) {
-		echo '{"error":{"text":'. $e->getMessage() .'}}';
-	}
-}
 
 //
 function saveAnswers() {
@@ -211,7 +460,6 @@ function saveAnswers() {
 	$request = Slim::getInstance()->request();
 	$answers = json_decode($request->getBody());
 
-  print_r($answers);
 
  // print_r($answers[0]->id);
 

@@ -1,0 +1,16 @@
+<form ng-submit="$parent.saveNewCategory()" method="post" name="newCategory" class="create-form">
+  <table>
+    <tr>
+      <td>
+        <input type="text" value="" placeholder="Nombre de la Categoría" ng-model="$parent.newCategoryName" name="name" required />
+      </td>
+      <td>
+        <div class="actions-links">
+          <button class="save" type="submit" title="Guardar"><i class="fa fa-check"></i></button>
+          <button class="delete" type="reset" ng-click="$parent.showCreateCategoryForm = false;" title="Cancelar"><i class="fa fa-times"></i></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</form>

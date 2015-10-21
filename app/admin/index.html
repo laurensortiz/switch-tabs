@@ -12,12 +12,13 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <!-- build:css(.tmp) styles/admin.css -->
     <link rel="stylesheet" href="../styles/admin.css">
     <!-- endbuild -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
-  <body ng-app="switchTabsAppAdmin">
+  <body ng-app="switchTabsAppAdmin" ng-cloak>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -62,17 +63,23 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="app.js"></script>
     <script src="common/sidebar/active-link.js"></script>
-    <script src="breadcrumb/breadcrumb.js"></script>
+    <script src="common/breadcrumb/breadcrumb.js"></script>
 
     <script src="scripts/controllers/login.js"></script>
 
     <script src="dashboard/dashboard.js"></script>
+    <script src="scripts/services/dashboard.js"></script>
 
     <script src="customers/customers.js"></script>
     <script src="customers/customer.js"></script>
     <script src="customers/customers-api.js"></script>
 
-    <script src="scripts/services/dashboard.js"></script>
+    <script src="categories/categories.js"></script>
+    <script src="categories/categories-api.js"></script>
+
+    <script src="surveys/survey-new.js"></script>
+    <script src="surveys/surveys.js"></script>
+    <script src="surveys/surveys-api.js"></script>
 
 
     <!-- endbuild -->

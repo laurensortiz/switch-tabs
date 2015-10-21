@@ -73,6 +73,40 @@ angular.module('switchTabsAppAdmin')
       return promise;
     };
 
+    service.addLocation = function (location) {
+
+      var promise = $http({
+        method: 'POST',
+        url: switch_tabs_config.api_server + 'location/add',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        data: location
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+    service.deleteLocation = function (locationID) {
+
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'location/delete/' + locationID,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        data: locationID
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+
+
+
     service.getCustomerSurvey = function (id) {
       var promise = $http({
         method: 'GET',
