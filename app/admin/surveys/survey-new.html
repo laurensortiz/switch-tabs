@@ -46,7 +46,7 @@
             <h3 ng-hide="!hasQuestions">Preguntas</h3>
 
             <div class="questions-list-container">
-              <p ng-hide="hasQuestions">Aún no hay preguntas en la encuesta</p>
+              <p ng-hide="hasQuestions"><i class="fa fa-exclamation-circle"></i> Aún no hay preguntas en la encuesta</p>
               <ol class="question-list" ng-show="hasQuestions">
                 <li ng-repeat="question in surveyQuestions">
                   <div class="col-7-8">
@@ -54,7 +54,6 @@
                     <span class="item sm q-t" ng-include="getPartialSrc(question.type)"></span>
                   </div>
                   <div class="col-1-8 actions-links">
-
                     <button class="btn red-th delete" ng-click="removeQuestion($index)" title="Eliminar"><i class="fa fa-times"></i></button>
                   </div>
                 </li>
@@ -93,13 +92,18 @@
             <h4>Publicar</h4>
             <div class="container-fluid text-a-c">
               <button class="btn" ng-click="previewSurvey()" ng-disabled="!hasQuestions">Vista previa</button>
-              <button class="btn secondary green-th" ng-click="saveSurveyQuestions()" ng-disabled="!hasQuestions">Publicar</button>
+              <button class="btn secondary green-th" ng-click="saveSurveyQuestions()" ng-disabled="!hasQuestions">Guardar</button>
             </div>
           </div><!--box-cont-->
           <div class="box-cont no-p">
-            <h4>Estado <i class="fa fa-power-off"></i></h4>
+            <h4>URL</h4>
             <div class="container-fluid">
-              <p>{{status}}</p>
+              <dl class="list-locations">
+                <li ng-repeat="location in customerLocations">
+                  <span class="location-area">{{location.store}} / {{location.area}}</span>
+                  <span class="url-survey">/?customer={{surveyCustomer}}&location={{location.id}}</span>
+                </li>
+              </dl>
             </div>
           </div><!--box-cont-->
         </div>

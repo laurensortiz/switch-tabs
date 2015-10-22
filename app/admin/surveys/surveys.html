@@ -7,21 +7,21 @@
 
       <tr ng-repeat="survey in $data">
         <td title="'ID'" sortable="'id'">
-          <a ng-href="survey/{{survey.id}}" title="ID">{{survey.id}}</a>
+          <a ng-href="/admin/survey/detail/{{survey.id}}" title="ID">{{survey.id}}</a>
         </td>
         <td title="'Nombre'" sortable="'name'"  filter="{name: 'text'}">
-          <a ng-href="survey/{{survey.id}}" title="Detalle de la Encuesta">{{survey.name}}</a>
+          <a ng-href="/admin/survey/detail/{{survey.id}}" title="Detalle de la Encuesta">{{survey.name}}</a>
         </td>
         <td title="'Cliente'" sortable="'customerName'" ng-switch="row.isEditing">
-          <a ng-href="survey/{{survey.customerName}}" title="Cliente">{{survey.customerName}}</a>
+          {{survey.customerName}}
         </td>
         <td title="'Status'">
           {{survey.status}}
         </td>
         <td class="txt-a-r" title="'Acciones'" >
           <div class="actions-links">
-            <a ng-href="/admin/customer/{{survey.id}}" title="Detalle de la Encuesta"><i class="fa fa-list-alt"></i></a>
-            <a ng-click="deleteLocation(survey.id)" title="Borrar"><i class="fa fa-trash-o"></i></a>
+            <a ng-href="/admin/survey/detail/{{survey.id}}" title="Detalle de la Encuesta"><i class="fa fa-list-alt"></i></a>
+            <a ng-click="deleteSurvey(survey.id)" title="Borrar"><i class="fa fa-trash-o"></i></a>
           </div>
         </td>
       </tr>

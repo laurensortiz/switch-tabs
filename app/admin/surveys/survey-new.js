@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('surveyNewCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', 'categories', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys, customers, categories ) {
+  .controller('surveyNewCtrl', ['$scope', '$rootScope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', 'categories', function ( $scope, $rootScope, $location, $window, $routeParams, NgTableParams, surveys, customers, categories ) {
 
     var self = this,
       surveyQuestions = [],
-      SURVEY_ID;
+      SURVEY_ID,
+      surveyQuestionsSaved = false;
 
     $scope.showSurveyQuestion = false;
     $scope.newSurveyName = '';
-    $scope.surveyCustomer = ''; //customerID
+    $scope.surveyCustomer = '1'; //customerID
     $scope.processing = false; //Indicate when an action (eg.sending form data) is happening
     $scope.survey = {};
     $scope.surveyQuestions = [];
@@ -27,6 +28,7 @@ angular.module('switchTabsAppAdmin')
       }
     };
 
+
     $scope.$watchCollection('surveyQuestions', function (newValue, oldValue) {
 
       ($scope.surveyQuestions.length > 0) ? $scope.hasQuestions = true :  $scope.hasQuestions = false;
@@ -36,17 +38,14 @@ angular.module('switchTabsAppAdmin')
 
     //Fetch All Customers
     customers.getAllCustomers().then(function (customers) {
-
       $scope.customerList = customers.data.customer;
-
     });
 
     //Fetch All Categories
     categories.getAllCategories().then(function (categories) {
-
       $scope.categoryList = categories.data.category;
-
     });
+
 
 
 
@@ -100,9 +99,41 @@ angular.module('switchTabsAppAdmin')
     };
 
     $scope.saveSurveyQuestions = function() {
-      surveys.saveSurveyQuestions($scope.surveyQuestions).then( function(response) {
-        console.log(response);
-      });
+
+      if ( $scope.survey.name !== $scope.newSurveyName || $scope.survey.customerID !== $scope.surveyCustomer ){
+        var newSurveyInfo = {
+          customerID : $scope.surveyCustomer,
+          name : $scope.newSurveyName
+        };
+        surveys.updateSurvey(SURVEY_ID, newSurveyInfo).then( function(response) {
+          console.log('Survey Info updated !');
+        });
+      }
+
+      // For avoid store duplicated questions we need to
+      // verify if the questions already stored
+      // In case the answer is NO let's saved
+      // In case the answer is YES let's remove it and then saved the new ones.
+
+      if ( !surveyQuestionsSaved ) {
+        surveys.saveSurveyQuestions($scope.surveyQuestions).then( function(response) {
+          surveyQuestionsSaved = true;
+          $rootScope.notification['text'] = 'Encuesta guardada';
+          $rootScope.notification['type'] = 'success';
+        });
+      }
+      else {
+        surveys.deleteSurveyQuestions( SURVEY_ID).then( function() {
+          console.log('Questions Deleted!');
+
+          surveys.saveSurveyQuestions($scope.surveyQuestions).then( function(response) {
+            $rootScope.notification['text'] = 'Encuesta actualizada';
+            $rootScope.notification['type'] = 'success';
+          });
+        });
+      }
+
+
     };
     
     $scope.removeQuestion = function(questionIndex) {

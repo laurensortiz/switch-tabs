@@ -1,5 +1,4 @@
 .top-nav{
-  width: 100%;
   margin-left: 260px;
   height: 63px;
   -webkit-box-shadow: 0 0 1px rgba(0,0,0,.3);
@@ -9,5 +8,59 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: 1000;
+
+  transition: background .25s ease-in-out;
+
+  @include clearfix;
+
+  .breadcrumbs{
+    float: left;
+  }
+  .action{
+    float: right;
+    position: absolute;
+    height: 100%;
+    right: 0;
+
+    .messages{
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      color: #fff;
+      margin: auto;
+      top: 0;
+      bottom: 150%;
+      right: 20px;
+      text-align: right;
+      transition: bottom .25s ease-in-out;
+
+    }
+    i{
+      display: none;
+      font-size: 40px;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+  }
+
+  //Messages Conditions
+  &.notification{
+    .messages{
+      bottom: 0;
+    }
+  }
+  &.success{
+    background-color: $green;
+    .fa-success{
+      display: inline-block;
+    }
+  }
+  &.error{
+    background-color: $red;
+    .fa-error{
+      display: inline-block;
+    }
+  }
 }

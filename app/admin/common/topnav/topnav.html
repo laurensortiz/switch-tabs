@@ -1,10 +1,14 @@
-<div class="top-nav">
-  <div class="container-fluid">
-    <nav class="breadcrumbs" ng-controller="breadcrumbCtrl">
-      <ng-include src="'common/breadcrumb/breadcrumb.tpl.html'"></ng-include>
-    </nav>
-    <div class="action">
 
+  <div class="top-nav" ng-controller="topNavCtrl as topNav" notifications>
+    <div class="container-fluid">
+      <nav class="breadcrumbs col-3-4" ng-controller="breadcrumbCtrl">
+        <ng-include src="'common/breadcrumb/breadcrumb.tpl.html'"></ng-include>
+      </nav>
+      <div class="action col-1-4">
+        <div class="messages">
+          {{notification.text}} <i class="fa fa-check-circle fa-success"></i><i class="fa fa-times-circle fa-error"></i>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+

@@ -21,9 +21,10 @@ angular.module('switchTabsAppAdmin')
     service.getSurvey = function (id) {
       var promise = $http({
         method: 'GET',
-        url: switch_tabs_config.api_server + 'survey/' + id,
+        url: switch_tabs_config.api_server + 'survey/' + id + '/',
         dataType: 'json'
       }).then(function (response) {
+        console.log(response);
         return response;
       });
       return promise;
@@ -55,7 +56,17 @@ angular.module('switchTabsAppAdmin')
         },
         data: surveyID
       }).then(function (response) {
-        console.log(response);
+        return response;
+      });
+      return promise;
+    };
+
+    service.updateSurvey = function (surveyID, newSurveyInfo) {
+      var promise = $http({
+        method: 'PUT',
+        url: switch_tabs_config.api_server + 'survey/update/' + surveyID,
+        data: newSurveyInfo
+      }).then(function (response) {
         return response;
       });
       return promise;
@@ -72,6 +83,8 @@ angular.module('switchTabsAppAdmin')
       return promise;
     };
 
+
+
     service.saveSurveyQuestions = function (surveyQuestions) {
 
       var promise = $http({
@@ -85,6 +98,50 @@ angular.module('switchTabsAppAdmin')
       });
       return promise;
     };
+
+    service.getSurveyQuestions = function (surveyID) {
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/questions/' + surveyID
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+    service.deleteSurveyQuestions = function (surveyID) {
+
+      var promise = $http({
+        method: 'DELETE',
+        url: switch_tabs_config.api_server + 'survey/questions/' + surveyID
+      }).then(function (response) {
+        console.log(response);
+        return response;
+      });
+      return promise;
+    };
+
+    service.getSurveyByCustomerAndLocations = function (surveyID) {
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/'+ surveyID +'/customer/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+    service.getSurveyAnswers = function (surveyID) {
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/'+ surveyID +'/answers/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+
 
 
     return service;

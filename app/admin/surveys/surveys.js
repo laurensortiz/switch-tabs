@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('surveysCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys, customers ) {
+  .controller('surveysCtrl', ['$scope', '$rootScope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', function ( $scope, $rootScope, $location, $window, $routeParams, NgTableParams, surveys, customers ) {
 
     var self = this,
         surveyData = [],
@@ -10,9 +10,6 @@ angular.module('switchTabsAppAdmin')
     $scope.showCreateCutomerForm = false;
     $scope.newLocationName = '';
     $scope.newLocationArea = '';
-
-
-
 
 
     var listSurveys = function() {
@@ -33,13 +30,13 @@ angular.module('switchTabsAppAdmin')
           page : 1,
           count : 15,
           sorting : {
-            key : 'asc'
+            key : 'desc'
           },
           filter : {
             name : ''
           }
         }, {
-          defaultSort : 'asc',
+          defaultSort : 'desc',
           data : surveyData
         });
 
@@ -50,13 +47,13 @@ angular.module('switchTabsAppAdmin')
 
 
 
-    $scope.deleteLocation = function (locationID) {
+    $scope.deleteSurvey = function (surveyID) {
       //Confirm delete
-      var confirmDelete = confirm('Desea borrar la tienda?');
+      var confirmDelete = confirm('Desea borrar la encuesta?');
 
       if ( confirmDelete ) {
-        customers.deleteLocation(locationID).then(function (response) {
-          //Update Location table list
+        surveys.deleteSurvey(surveyID).then(function (response) {
+          //Update Survey table list
           listSurveys();
 
         });

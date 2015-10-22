@@ -1,0 +1,61 @@
+<div class="survey survey-detail container">
+
+  <header>
+    <h2>{{surveyInfo.name}}</h2>
+    <h4>{{customerInfo.name}}</h4>
+    <span class="bubble-results"><i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}</span>
+  </header>
+  <div class="main-block">
+    <div class="col-3-4">
+
+      <div class="box-cont filter no-p">
+        <h4>Filtro</h4>
+        <div class="container-fluid text-a-c">
+          <p>Por tienda:</p>
+          <ul class="filter-group">
+            <li ng-repeat="location in surveyLocation"><label for="location{{location.locationID}}"><input id="location{{location.locationID}}" type="checkbox"/>{{location.store}} <span>{{location.area}}</span></label></li>
+          </ul>
+          <p>Otros:</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-1-4 aside">
+      <div class="box-cont no-p">
+        <h4>Creada</h4>
+        <div class="container-fluid text-a-c">
+          <i class="fa fa-calendar"></i> {{surveyInfo.date}}
+        </div>
+        <h4>Respuestas</h4>
+        <div class="container-fluid text-a-c">
+           <i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}
+        </div>
+      </div><!--box-cont-->
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="box-cont">
+    <table ng-table="surveyDetail.tableParams" class="table table-condensed table-bordered table-striped table-w-actions">
+      <thead>
+      <th ng-repeat="question in questions">{{question.question}}</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="answers in $data">
+          <td ng-repeat="answer in answers.answers">{{answer.answer}} {{getObj(answers.answers)}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<!--Create Customer Btn-->
+<button class="add-btn" ng-click="showCreateCutomerForm = true;" title="Descargar datos"><i class="fa fa-download"></i></button>
+<!--/Create Customer Btn-->
+
