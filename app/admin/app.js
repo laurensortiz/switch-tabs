@@ -52,6 +52,12 @@ angular
         controllerAs  : 'categories',
         label         : 'Categorías'
       })
+      .when('/surveys/', {
+        templateUrl   : 'surveys/surveys.html',
+        controller    : 'surveysCtrl',
+        controllerAs  : 'surveys',
+        label         : 'Encuestas'
+      })
       .when('/survey/new', {
         templateUrl   : 'surveys/survey-new.html',
         controller    : 'surveyNewCtrl',

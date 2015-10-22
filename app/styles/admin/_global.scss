@@ -44,6 +44,8 @@ input, textarea, select{
 
 header{
   margin-bottom: 25px;
+
+
 }
 
 table{
@@ -133,6 +135,7 @@ main{
   position: relative;
   padding-top: 65px;
   min-height: 100vh;
+  padding-bottom: 40px;
 }
 
 .aside{
@@ -305,6 +308,7 @@ tbody{
   position: fixed;
   bottom: 20px;
   right: 20px;
+  text-align: center;
 
   &:hover{
     box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);

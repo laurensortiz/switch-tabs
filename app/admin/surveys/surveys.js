@@ -1,71 +1,54 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('surveysCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys ) {
+  .controller('surveysCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys, customers ) {
 
     var self = this,
-      customersLocationData = [],
-      newLocation = {},// require attributes ->idCustomer: id, store: name, area: name
-      currentCustomer = $routeParams.id;
+        surveyData = [],
+        customersData = [];
 
     $scope.showCreateCutomerForm = false;
     $scope.newLocationName = '';
     $scope.newLocationArea = '';
 
 
-    //Fetch Customer
-
-    customers.getCustomer(currentCustomer).then(function (customer) {
-
-      $scope.customerName = customer.data.name;
-      //Fetch Customer Locations
-      listLocationByCustomer();
-
-    });
 
 
-    var listLocationByCustomer = function() {
-      customers.getCustomerLocations(currentCustomer).then(function (locations) {
 
-        customersLocationData = locations.data;
+    var listSurveys = function() {
 
-        $scope.tableParams = new NgTableParams({
+      surveys.getAllSurveys().then(function (surveys) {
+        surveyData = surveys.data.survey;
+        //Fetch Customer
+        customers.getAllCustomers().then(function (customers) {
+          customersData = customers.data.customer;
+
+          _.forEach(surveyData, function(n, k) {
+            surveyData[k].customerName = _.result(_.find(customersData, {'id': n.customerID}), 'name');
+          });
+
+        });
+
+        self.tableParams = new NgTableParams({
           page : 1,
-          count : 30,
+          count : 15,
           sorting : {
             key : 'asc'
+          },
+          filter : {
+            name : ''
           }
         }, {
-          counts : '',
           defaultSort : 'asc',
-          data : customersLocationData
+          data : surveyData
         });
 
       });
     };
 
+    listSurveys();
 
 
-
-
-    $scope.saveNewLocation = function () {
-      //Fill the object with the new info location
-      newLocation = {
-        idCustomer: currentCustomer,
-        store : $scope.newLocationName,
-        area : $scope.newLocationArea
-      };
-      
-      customers.addLocation(newLocation).then(function (response) {
-
-        $scope.showCreateCutomerForm = false;
-        $scope.newLocationName = '';
-        $scope.newLocationArea = '';
-        //Update Location table list
-        listLocationByCustomer();
-
-      });
-    };
 
     $scope.deleteLocation = function (locationID) {
       //Confirm delete
@@ -74,14 +57,14 @@ angular.module('switchTabsAppAdmin')
       if ( confirmDelete ) {
         customers.deleteLocation(locationID).then(function (response) {
           //Update Location table list
-          listLocationByCustomer();
+          listSurveys();
 
         });
 
       };
 
 
-    }
+    };
 
 
 

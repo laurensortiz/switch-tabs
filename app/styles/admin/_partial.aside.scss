@@ -130,7 +130,8 @@
 
     .has-child-items{
       .child-items{
-        display: none;
+        //display: none;
+        display: block;
       }
 
       &:hover, &.active{
@@ -145,6 +146,6 @@
 }
 
 //Temp
-.logo,  .main-aside .user-logged-in{
-  display: none;
-}
+//.logo,  .main-aside .user-logged-in{
+//  display: none;
+//}

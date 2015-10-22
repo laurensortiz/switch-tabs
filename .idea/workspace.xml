@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beb31f2c-ac33-4090-8a81-7e38aeec53f3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/admin/breadcrumb/breadcrumb.js" afterPath="$PROJECT_DIR$/app/admin/common/breadcrumb/breadcrumb.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/admin/breadcrumb/breadcrumb.tpl.html" afterPath="$PROJECT_DIR$/app/admin/common/breadcrumb/breadcrumb.tpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss" afterPath="$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin/_global.scss" afterPath="$PROJECT_DIR$/app/styles/admin/_global.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin/_partial.aside.scss" afterPath="$PROJECT_DIR$/app/styles/admin/_partial.aside.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/_variables.scss" afterPath="$PROJECT_DIR$/app/styles/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin/_variables.scss" afterPath="$PROJECT_DIR$/app/styles/admin/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin.scss" afterPath="$PROJECT_DIR$/app/styles/admin.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/app.js" afterPath="$PROJECT_DIR$/app/admin/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/customers/partials/customer.create.tpl.html" afterPath="$PROJECT_DIR$/app/admin/customers/partials/customer.create.tpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/customers/customer.html" afterPath="$PROJECT_DIR$/app/admin/customers/customer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/customers/customer.js" afterPath="$PROJECT_DIR$/app/admin/customers/customer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/customers/customers-api.js" afterPath="$PROJECT_DIR$/app/admin/customers/customers-api.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/customers/customers.html" afterPath="$PROJECT_DIR$/app/admin/customers/customers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/admin/customers.scss" afterPath="$PROJECT_DIR$/app/styles/admin/customers.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/index.html" afterPath="$PROJECT_DIR$/app/admin/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/index.php" afterPath="$PROJECT_DIR$/api/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/main.scss" afterPath="$PROJECT_DIR$/app/styles/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/common/sidebar/sidebar.html" afterPath="$PROJECT_DIR$/app/admin/common/sidebar/sidebar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/common/topnav/topnav.html" afterPath="$PROJECT_DIR$/app/admin/common/topnav/topnav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/surveys/surveys.html" afterPath="$PROJECT_DIR$/app/admin/surveys/surveys.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/surveys/surveys.js" afterPath="$PROJECT_DIR$/app/admin/surveys/surveys.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="switch-tabs.iws" />
@@ -55,31 +40,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/app.js">
+      <file leaf-file-name="surveys-api.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys-api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="511" max-vertical-offset="1140">
-              <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
+              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gruntfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <file leaf-file-name="surveys.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="8130">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.34596375" vertical-offset="0" max-vertical-offset="607">
+              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="survey-new.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/surveys/survey-new.html">
+      <file leaf-file-name="_global.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/styles/admin/_global.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3333333" vertical-offset="595" max-vertical-offset="1755">
-              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+            <state vertical-scroll-proportion="-7.4166665" vertical-offset="1607" max-vertical-offset="6285">
+              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,70 +73,8 @@
       <file leaf-file-name="surveys.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="survey.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/scripts/services/survey.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.740741" vertical-offset="613" max-vertical-offset="1215">
-              <caret line="62" column="76" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.1764705" vertical-offset="513" max-vertical-offset="8535">
-              <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-              <folding>
-                <marker date="1445409868000" expanded="true" signature="1990:2012" placeholder="select * FRO..customer..." />
-                <marker date="1445409868000" expanded="true" signature="2357:2392" placeholder="SELECT * FRO..customer..." />
-                <marker date="1445409868000" expanded="true" signature="2862:2910" placeholder="INSERT INTO ..." />
-                <marker date="1445409868000" expanded="true" signature="3250:3283" placeholder="DELETE FROM ..." />
-                <marker date="1445409868000" expanded="true" signature="3653:3696" placeholder="SELECT * FRO..location..." />
-                <marker date="1445409868000" expanded="true" signature="4095:4157" placeholder="SELECT * FRO..location..." />
-                <marker date="1445409868000" expanded="true" signature="4700:4788" placeholder="INSERT INTO ..." />
-                <marker date="1445409868000" expanded="true" signature="5219:5252" placeholder="DELETE FROM ..." />
-                <marker date="1445409868000" expanded="true" signature="5612:5634" placeholder="select * FRO..category..." />
-                <marker date="1445409868000" expanded="true" signature="5994:6029" placeholder="SELECT * FRO..category..." />
-                <marker date="1445409868000" expanded="true" signature="6513:6557" placeholder="INSERT INTO ..." />
-                <marker date="1445409868000" expanded="true" signature="6878:6911" placeholder="DELETE FROM ..." />
-                <marker date="1445409868000" expanded="true" signature="7270:7290" placeholder="select * FRO..survey..." />
-                <marker date="1445409868000" expanded="true" signature="7646:7679" placeholder="SELECT * FRO..survey..." />
-                <marker date="1445409868000" expanded="true" signature="8157:8243" placeholder="INSERT INTO ..." />
-                <marker date="1445409868000" expanded="true" signature="8668:8699" placeholder="DELETE FROM ..." />
-                <marker date="1445409868000" expanded="true" signature="8977:9018" placeholder="SELECT * FRO..survey..." />
-                <marker date="1445409868000" expanded="true" signature="9543:9618" placeholder="INSERT INTO ..." />
-                <marker date="1445409868000" expanded="true" signature="10960:11002" placeholder="SELECT * FRO..questions..." />
-                <marker date="1445409868000" expanded="true" signature="11763:11805" placeholder="SELECT * FRO..answers..." />
-                <marker date="1445409868000" expanded="true" signature="12339:12407" placeholder="INSERT INTO ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="surveys-api.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys-api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7186009" vertical-offset="163" max-vertical-offset="1455">
-              <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="survey-new.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/surveys/survey-new.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1186" max-vertical-offset="1815">
-              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1155">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -160,18 +83,8 @@
       <file leaf-file-name="_comp.ngtable.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="2295">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_survey.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/styles/admin/_survey.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="1140">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.019608" vertical-offset="2135" max-vertical-offset="2715">
+              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -185,7 +98,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/styles/admin/partials/_aside.scss" />
         <option value="$PROJECT_DIR$/app/admin/views/partials/sidebar.html" />
         <option value="$PROJECT_DIR$/app/admin/breadcrumb/uiBreadcrumbs.js" />
         <option value="$PROJECT_DIR$/app/admin/scripts/app.js" />
@@ -201,7 +113,6 @@
         <option value="$PROJECT_DIR$/web.config" />
         <option value="$PROJECT_DIR$/app/admin/customers/customers.js" />
         <option value="$PROJECT_DIR$/bower_components/ng-table/Gruntfile.js" />
-        <option value="$PROJECT_DIR$/app/admin/customers/customers.html" />
         <option value="$PROJECT_DIR$/app/admin/customers/partials/customer.create-location.tpl.html" />
         <option value="$PROJECT_DIR$/app/admin/customers/partials/customer.create.tpl.html" />
         <option value="$PROJECT_DIR$/app/admin/customers/customer.js" />
@@ -215,27 +126,29 @@
         <option value="$PROJECT_DIR$/app/admin/categories/categories.js" />
         <option value="$PROJECT_DIR$/app/admin/categories/categories.html" />
         <option value="$PROJECT_DIR$/app/admin/categories/partials/category.create.tpl.html" />
-        <option value="$PROJECT_DIR$/app/styles/admin/_partial.aside.scss" />
         <option value="$PROJECT_DIR$/app/admin/survey/survey.html" />
-        <option value="$PROJECT_DIR$/app/admin/surveys/surveys.js" />
         <option value="$PROJECT_DIR$/app/admin/common/sidebar/sidebar.html" />
         <option value="$PROJECT_DIR$/app/styles/admin/customers.scss" />
         <option value="$PROJECT_DIR$/app/admin/index.html" />
         <option value="$PROJECT_DIR$/app/styles/main.scss" />
         <option value="$PROJECT_DIR$/app/styles/_variables.scss" />
         <option value="$PROJECT_DIR$/app/styles/admin.scss" />
-        <option value="$PROJECT_DIR$/app/styles/admin/_global.scss" />
         <option value="$PROJECT_DIR$/app/admin/surveys/partials/question_type_multiple.html" />
         <option value="$PROJECT_DIR$/app/admin/surveys/partials/question_type_polar.html" />
         <option value="$PROJECT_DIR$/app/styles/admin/_variables.scss" />
-        <option value="$PROJECT_DIR$/app/admin/app.js" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/api/index.php" />
-        <option value="$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss" />
         <option value="$PROJECT_DIR$/app/styles/admin/_survey.scss" />
         <option value="$PROJECT_DIR$/app/admin/surveys/survey-new.html" />
         <option value="$PROJECT_DIR$/app/admin/surveys/survey-new.js" />
         <option value="$PROJECT_DIR$/app/admin/surveys/surveys-api.js" />
+        <option value="$PROJECT_DIR$/app/admin/customers/customers.html" />
+        <option value="$PROJECT_DIR$/app/admin/app.js" />
+        <option value="$PROJECT_DIR$/app/styles/admin/_partial.aside.scss" />
+        <option value="$PROJECT_DIR$/app/admin/surveys/surveys.js" />
+        <option value="$PROJECT_DIR$/app/admin/surveys/surveys.html" />
+        <option value="$PROJECT_DIR$/app/styles/admin/_global.scss" />
+        <option value="$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss" />
       </list>
     </option>
   </component>
@@ -274,7 +187,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,120 +327,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -570,32 +368,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="surveys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="switch-tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="surveys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -747,6 +519,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -760,9 +533,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/admin/surveys" />
       <recent name="$PROJECT_DIR$/app/admin/surveys/partials" />
       <recent name="$PROJECT_DIR$/app/styles" />
-      <recent name="$PROJECT_DIR$/app/admin/surveys" />
       <recent name="$PROJECT_DIR$/app/admin/survey" />
       <recent name="$PROJECT_DIR$/app/admin/survey/categories/partials" />
     </key>
@@ -797,6 +570,9 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -804,9 +580,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="1">
@@ -838,9 +611,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2819063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28594506" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -848,10 +619,12 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -895,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -925,22 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="2190">
           <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="585">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02377179" vertical-offset="150" max-vertical-offset="1095">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,14 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="1410">
           <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="615">
-          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -971,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="225">
           <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="570">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,23 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="315">
           <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/admin/_partial.aside.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.166667" vertical-offset="1643" max-vertical-offset="2325">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer-survey.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.446281" vertical-offset="315" max-vertical-offset="1080">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5206612" vertical-offset="0" max-vertical-offset="1125">
           <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20661157" vertical-offset="100" max-vertical-offset="705">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,19 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers-api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="3120">
-          <caret line="64" column="32" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/common/sidebar/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.083333" vertical-offset="205" max-vertical-offset="825">
           <caret line="33" column="56" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,15 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.393586" vertical-offset="0" max-vertical-offset="343">
           <caret line="9" column="33" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,35 +828,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer-survey.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.23847377" vertical-offset="225" max-vertical-offset="1215">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5" vertical-offset="210" max-vertical-offset="1395">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/surveys/partials/question_type_multiple.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
           <caret line="0" column="112" selection-start-line="0" selection-start-column="112" selection-end-line="0" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/admin/_global.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.958333" vertical-offset="3520" max-vertical-offset="6225">
-          <caret line="257" column="29" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,7 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1171,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
           <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1187,13 +869,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="675">
           <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/scripts/services/survey.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.740741" vertical-offset="613" max-vertical-offset="1215">
+        <state vertical-scroll-proportion="0.0" vertical-offset="613" max-vertical-offset="1215">
           <caret line="62" column="76" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="76" />
           <folding />
         </state>
@@ -1203,15 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2657807" vertical-offset="1077" max-vertical-offset="2385">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="511" max-vertical-offset="1140">
-          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1223,64 +895,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1764705" vertical-offset="513" max-vertical-offset="8535">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-          <folding>
-            <marker date="1445409868000" expanded="true" signature="1990:2012" placeholder="select * FRO..customer..." />
-            <marker date="1445409868000" expanded="true" signature="2357:2392" placeholder="SELECT * FRO..customer..." />
-            <marker date="1445409868000" expanded="true" signature="2862:2910" placeholder="INSERT INTO ..." />
-            <marker date="1445409868000" expanded="true" signature="3250:3283" placeholder="DELETE FROM ..." />
-            <marker date="1445409868000" expanded="true" signature="3653:3696" placeholder="SELECT * FRO..location..." />
-            <marker date="1445409868000" expanded="true" signature="4095:4157" placeholder="SELECT * FRO..location..." />
-            <marker date="1445409868000" expanded="true" signature="4700:4788" placeholder="INSERT INTO ..." />
-            <marker date="1445409868000" expanded="true" signature="5219:5252" placeholder="DELETE FROM ..." />
-            <marker date="1445409868000" expanded="true" signature="5612:5634" placeholder="select * FRO..category..." />
-            <marker date="1445409868000" expanded="true" signature="5994:6029" placeholder="SELECT * FRO..category..." />
-            <marker date="1445409868000" expanded="true" signature="6513:6557" placeholder="INSERT INTO ..." />
-            <marker date="1445409868000" expanded="true" signature="6878:6911" placeholder="DELETE FROM ..." />
-            <marker date="1445409868000" expanded="true" signature="7270:7290" placeholder="select * FRO..survey..." />
-            <marker date="1445409868000" expanded="true" signature="7646:7679" placeholder="SELECT * FRO..survey..." />
-            <marker date="1445409868000" expanded="true" signature="8157:8243" placeholder="INSERT INTO ..." />
-            <marker date="1445409868000" expanded="true" signature="8668:8699" placeholder="DELETE FROM ..." />
-            <marker date="1445409868000" expanded="true" signature="8977:9018" placeholder="SELECT * FRO..survey..." />
-            <marker date="1445409868000" expanded="true" signature="9543:9618" placeholder="INSERT INTO ..." />
-            <marker date="1445409868000" expanded="true" signature="10960:11002" placeholder="SELECT * FRO..questions..." />
-            <marker date="1445409868000" expanded="true" signature="11763:11805" placeholder="SELECT * FRO..answers..." />
-            <marker date="1445409868000" expanded="true" signature="12339:12407" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="2295">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/admin/_survey.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="1140">
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1140">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/surveys/survey-new.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333" vertical-offset="595" max-vertical-offset="1755">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1293,10 +911,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="585">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/surveys/survey-new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1755">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/admin/_partial.aside.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.416666" vertical-offset="1553" max-vertical-offset="2340">
+          <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1230">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="16.583334" vertical-offset="788" max-vertical-offset="1395">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="250.75" vertical-offset="6693" max-vertical-offset="8535">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding>
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="select * FRO..customer..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..customer..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..location..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..location..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="select * FRO..category..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..category..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="select * FRO..survey..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..survey..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..survey..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..questions..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..answers..." />
+            <marker date="1445409868000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38034865" vertical-offset="15" max-vertical-offset="1095">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer-survey.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1215">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="615">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customers-api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="3120">
+          <caret line="123" column="52" selection-start-line="123" selection-start-column="46" selection-end-line="123" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/customers/customer-survey.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0" vertical-offset="75" max-vertical-offset="1080">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys-api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7186009" vertical-offset="163" max-vertical-offset="1455">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1155">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/admin/_global.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4166665" vertical-offset="1607" max-vertical-offset="6285">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/admin/_comp.ngtable.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.019608" vertical-offset="2135" max-vertical-offset="2715">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/surveys/surveys.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34596375" vertical-offset="0" max-vertical-offset="607">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
           <folding />
         </state>
       </provider>
