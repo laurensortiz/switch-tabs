@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App Switch Tabs</title>
+    <meta name="robots" content="noindex" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
+
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link href="apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+    <link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="icon-caritas-h.png" rel="icon" sizes="192x192" />
+    <link href="icon-caritas-n.png" rel="icon" sizes="128x128" />
+    <script>
+      window.scrollTo(0,1);
+    </script>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="switchTabsAppPublic">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div class="main-container">
+      <div ng-view=""></div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/ng-fastclick/dist/index.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.js"></script>
+    <script src="survey/survey.js"></script>
+    <script src="survey/surveys-api.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

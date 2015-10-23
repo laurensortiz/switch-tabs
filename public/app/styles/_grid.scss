@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+/**
+ * These values will not show up in content, but can be
+ * queried by JavaScript to know which breakpoint is active.
+ * Add or remove as many breakpoints as you like.
+ */
+body:before {
+  content: "320";
+  display: none; /* Prevent from displaying. */
+}
+
+@media (min-width: 768px) {
+  body:before {
+    content: "768";
+  }
+}
+@media (min-width: 992px) {
+  body:before {
+    content: "992";
+  }
+}
+@media (min-width: 1100px) {
+  body:before {
+    content: "1100";
+  }
+}
+@media (min-width: 1500px) {
+  body:before {
+    content: "1500";
+  }
+}
+
+
+$pad: 20px;
+
+
+
+.grid {
+	margin: 0 0 $pad 0;
+	@include clearfix();
+}
+
+[class*='col-'] {
+	float: left;
+	padding-right: 0;
+    @media screen and (min-width: $sm) {
+      padding-right: $pad;
+    }
+	.grid &:last-of-type {
+		padding-right: 0;
+	}
+}
+
+.col-1-2 {
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 50%;
+  }
+
+}
+
+.col-1-3 {
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 33.33%;
+  }
+
+}
+.col-2-3 {
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 66.66%;
+  }
+
+}
+
+.col-1-4 {
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 25%;
+  }
+
+}
+.col-3-4 {
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 75%;
+  }
+
+}
+
+.col-1-8 {
+	width: 12.5%;
+}
+.col-7-8 {
+	width: 87.5%;
+}
+
+.module {
+	padding: $pad;
+}
+
+/* Opt-in outside padding */
+.grid-pad {
+	padding: $pad 0 $pad $pad;
+	[class*='col-']:last-of-type {
+		padding-right: $pad;
+	}
+}

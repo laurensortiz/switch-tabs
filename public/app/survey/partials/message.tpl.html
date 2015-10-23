@@ -1,0 +1,60 @@
+<div class="modal-bg">
+  <div class="processing" ng-show="processing">
+    <i class="fa fa-circle-o-notch fa-spin"></i>
+  </div>
+  <div class="cont">
+
+    <!--Survey not selected-->
+    <div class="select-survey" ng-show="shortCuteAlert">
+      <h2><i class="fa fa-exclamation-circle"></i> Crear accesso directo</h2>
+      <p>Por favor crear acceso directo en la pantalla principal e ingrese desde ahí.</p>
+
+    </div>
+    <!--/Survey not selected-->
+
+    <!--Survey not selected-->
+    <div class="select-survey" ng-show="surveyNotSelected">
+      <h2><i class="fa fa-exclamation-circle"></i> Debe indicar una encuesta</h2>
+      <p>Indicar número de encuesta</p>
+      <form ng-submit="$parent.surveySelected()" name="selectSurvey">
+        <input type="number" ng-model="$parent.surveyID" required/>
+        <button type="submit" class="btn">Seleccionar</button>
+        <div class="error-text">
+          {{errorText}}
+        </div>
+      </form>
+    </div>
+    <!--/Survey not selected-->
+
+    <!--Verify survey-->
+    <div class="select-survey" ng-show="surveyVerify">
+      <h2><i class="fa fa-list-ul"></i> {{surveyName}}</h2>
+      <p><i class="fa fa-user"></i> {{customerName}}</p>
+      <button ng-click="$parent.surveyVerify = false; $parent.surveyNotSelected = true;" class="btn red-th">Datos incorrectos</button>
+      <button ng-click="$parent.surveyVerify = false; $parent.surveyVerify = false; $parent.selectLocation = true;" class="btn">Continuar</button>
+    </div>
+    <!--/Verify survey-->
+
+    <div class="select-survey" ng-show="selectLocation">
+      <h2><i class="fa fa-question-circle"></i> Seleccionar la tienda o área a evaluar</h2>
+      <button ng-repeat="location in surveyInfo" ng-click="$parent.loadQuestions(location.locationID)" class="btn cta-location">{{location.store}} <span>{{location.area}}</span></button>
+
+    </div>
+
+    <!--Inactivity-->
+    <div class="waiting" ng-show="surveyInactive">
+      <h2><i class="fa fa-exclamation-triangle"></i> La encuesta se reiniciará en:</h2>
+      <p class="number" ng-bind="$parent.counter"></p>
+      <p>Desea continuar ?</p>
+      <a class="btn" ng-click="$parent.continueSurvey()">Si, deseo continuar</a>
+    </div>
+    <!--/Inactivity-->
+
+
+
+
+
+
+  </div>
+
+</div>

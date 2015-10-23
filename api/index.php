@@ -21,6 +21,9 @@ $app->get('/customer/:id',	'getCustomer');
 $app->get('/survey/customer/:customerID',	'getSurveyByCustomer');
 $app->post('/survey/save',	'saveAnswers');
 
+
+
+
 //Admin
 $app->get('/admin', 'login');
 
@@ -431,7 +434,7 @@ function deleteSurveyQuestions($surveyID) {
 
 function getSurveyQuestions( $surveyID ) {
   //$sql = "SELECT id FROM survey WHERE customerID =:customerID AND status = 'active'";
-  $sql = "SELECT Q.question as question, Q.categoryID as questionCategoryID, Q.type as questionType, Ct.name as questionCategory
+  $sql = "SELECT Q.id as id, Q.question as question, Q.categoryID as questionCategoryID, Q.type as questionType, Ct.name as questionCategory
           FROM questions Q, category Ct
           WHERE Q.surveyID =:surveyID AND Ct.id = Q.categoryID";
   try {
@@ -546,7 +549,7 @@ function saveAnswers() {
 
  // print_r($answers[0]->id);
 
-	$sql = "INSERT INTO answers (questionID, locationID, answer, created) VALUES ";
+	$sql = "INSERT INTO answers (questionID, locationID, answer, answerKey) VALUES ";
   $qPart = array_fill(0, count($answers), "(?, ?, ?, ?)");
   $sql .= implode(",",$qPart);
 
@@ -562,7 +565,7 @@ function saveAnswers() {
       $stmt->bindValue($i++, $item->id);
       $stmt->bindValue($i++, $item->location);
       $stmt->bindValue($i++, $item->answer);
-      $stmt->bindValue($i++, $item->created);
+      $stmt->bindValue($i++, $item->answerKey);
 
 
     }
