@@ -30,6 +30,7 @@ angular.module('switchTabsAppAdmin')
 
 
     $scope.$watchCollection('surveyQuestions', function (newValue, oldValue) {
+
       ($scope.surveyQuestions.length > 0) ? $scope.hasQuestions = true :  $scope.hasQuestions = false;
 
     });
@@ -44,49 +45,6 @@ angular.module('switchTabsAppAdmin')
     categories.getAllCategories().then(function (categories) {
       $scope.categoryList = categories.data.category;
     });
-    
-    //Fetch the new locations on selection Customer 
-    $scope.$watch('surveyCustomer', function(newCustomerID, oldCustomerID) {
-
-      if ( newCustomerID !== oldCustomerID ) {
-        //Fetch All Locations
-        customers.getCustomerLocations( newCustomerID ).then( function( locations ) {
-          $scope.customerLocations = locations.data;
-        });
-      }
-
-    });
-
-    //Show step 2 view where the user creates questions
-    $scope.surveyInitInfo =  function( form ){
-      if ( form.$valid ){
-        $scope.showSurveyQuestion = true;
-
-        $scope.selectAll = function (value) {
-
-          if (value !== undefined) {
-            return setAllSelected(value);
-          } else {
-            return getAllSelected();
-          }
-        }
-      }
-    };
-
-    //Handler the selected location on the current survey
-    var getAllSelected = function () {
-      var selectedItems = $scope.customerLocations.filter(function (location) {
-        return location.Selected;
-      });
-
-      return selectedItems.length === $scope.customerLocations.length;
-    }
-
-    var setAllSelected = function (value) {
-      angular.forEach($scope.customerLocations, function (location) {
-        location.Selected = value;
-      });
-    }
 
 
 
@@ -100,31 +58,28 @@ angular.module('switchTabsAppAdmin')
         status     : 'active' // Every survey is active by default
       };
 
+      surveys.addSurvey( newSurveyInfo ).then( function(response) {
+        
+        if ( response.data.status === 'success' ) {
+          
+          surveys.getSurveysByCustomer( $scope.surveyCustomer ).then( function(response) {
+            $scope.survey = _.last(response.data);
+            $scope.showSurveyQuestion = true;
+
+     
+            SURVEY_ID = $scope.survey.id;
 
 
-      //surveys.addSurvey( newSurveyInfo ).then( function(response) {
-      //
-      //  if ( response.data.status === 'success' ) {
-      //
-      //    surveys.getSurveysByCustomer( $scope.surveyCustomer ).then( function(response) {
-      //      $scope.survey = _.last(response.data);
-      //      $scope.showSurveyQuestion = true;
-      //
-      //
-      //      SURVEY_ID = $scope.survey.id;
-      //
-      //
-      //      //Fetch All Locations
-      //      customers.getCustomerLocations( $scope.surveyCustomer ).then( function( locations ) {
-      //        $scope.customerLocations = locations.data;
-      //      });
-      //
-      //    });
-      //
-      //  }//end IF
-      //
-      //});
+            //Fetch All Locations
+            customers.getCustomerLocations( $scope.surveyCustomer ).then( function( locations ) {
+              $scope.customerLocations = locations.data;
+            });
+            
+          });
+          
+        }//end IF
 
+      });
     };
 
     $scope.addQuestion = function (){

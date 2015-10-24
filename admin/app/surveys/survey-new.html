@@ -5,25 +5,26 @@
       <h2><i class="fa fa-list-ul"></i> Nueva Encuesta</h2>
     </header>
     <div class="box-cont">
-      <form ng-submit="newSurvey()" method="post" class="survey-form" ng-class="{'processing' : processing}">
+      <form name="surveyInitData" ng-submit="surveyInitInfo(surveyInitData)" method="post" class="survey-form" ng-class="{'processing' : processing}">
         <h3>Indicar el nombre de la encuesta</h3>
         <label for="surveyName">
           <input id="surveyName" type="text" value="" ng-model="newSurveyName" name="name" required/>
         </label>
         <h3>Seleccionar el cliente</h3>
         <label for="surveyCustomer">
-          <select name="customerID" id="surveyCustomer" ng-model="surveyCustomer">
-            <option ng-repeat="option in customerList" value="{{option.id}}">{{option.name}}</option>
+          <select name="customerID" id="surveyCustomer" ng-model="surveyCustomer" ng-init="surveyCustomer = option[0].value" ng-options="option.id as option.name for option in customerList" required>
+            <option value="" ng-selected="true"></option>
+            <!--<option ng-repeat="option in customerList" value="{{option.id}}">{{option.name}}</option>-->
           </select>
         </label>
-        <button ng-disabled="processing" class="btn secondary green-th" type="submit" title="Guardar"><i class="fa fa-circle-o-notch fa-spin"></i><i class="fa fa-plus-circle"></i> Crear</button>
+        <button ng-disabled="processing" ng-click="submitted = true" class="btn secondary green-th" type="submit" title="Siguiente"><i class="fa fa-circle-o-notch fa-spin"></i><i class="fa fa-plus-circle"></i> Siguiente</button>
 
       </form>
     </div>
   </div><!--End Step 1-->
 
 
-  <div class="step-2 " ng-show="showSurveyQuestion">
+  <div class="step-2 " ng-show="!showSurveyQuestion">
     <form ng-submit="saveSurvey()" name="surveyQuestionsForm" method="post" class="survey-form" ng-class="{'processing' : processing}">
       <header>
         <h2><label for="survey"><span>Encuesta</span>
@@ -96,12 +97,12 @@
             </div>
           </div><!--box-cont-->
           <div class="box-cont no-p">
-            <h4>URL</h4>
+            <h4>Aplicar en:</h4>
             <div class="container-fluid">
               <dl class="list-locations">
+                <li><label for="location-all"><input id="location-all" type="checkbox" ng-model="selectAll" ng-model-options="{ getterSetter : true}" /> Todas</label></li>
                 <li ng-repeat="location in customerLocations">
-                  <span class="location-area">{{location.store}} / {{location.area}}</span>
-                  <span class="url-survey">/?customer={{surveyCustomer}}&location={{location.id}}</span>
+                  <input id="location-{{location.id}}" type="checkbox" value="{{location.id}}"  ng-model="location.Selected" ng-init="location.Selected = true"  /> <label for="location-{{location.id}}">{{location.store}} <span class="location-area"> / {{location.area}}</span></label>
                 </li>
               </dl>
             </div>
