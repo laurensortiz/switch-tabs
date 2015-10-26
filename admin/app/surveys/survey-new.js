@@ -5,8 +5,12 @@ angular.module('switchTabsAppAdmin')
 
     var self = this,
       surveyQuestions = [],
+      guid, // Function that return a random number
       SURVEY_ID,
-      surveyQuestionsSaved = false;
+      surveyQuestionsSaved = false,
+      surveyByLocationSaved = false,
+      surveyByLocation,
+      surveyByLocationStored;
 
     $scope.showSurveyQuestion = false;
     $scope.newSurveyName = '';
@@ -52,26 +56,20 @@ angular.module('switchTabsAppAdmin')
         //Fetch All Locations
         customers.getCustomerLocations( newCustomerID ).then( function( locations ) {
           $scope.customerLocations = locations.data;
+
+          $scope.selectAll = function (value) {
+
+            if (value !== undefined) {
+              return setAllSelected(value);
+            } else {
+              return getAllSelected();
+            }
+          }
         });
       }
 
     });
 
-    //Show step 2 view where the user creates questions
-    $scope.surveyInitInfo =  function( form ){
-      if ( form.$valid ){
-        $scope.showSurveyQuestion = true;
-
-        $scope.selectAll = function (value) {
-
-          if (value !== undefined) {
-            return setAllSelected(value);
-          } else {
-            return getAllSelected();
-          }
-        }
-      }
-    };
 
     //Handler the selected location on the current survey
     var getAllSelected = function () {
@@ -80,52 +78,65 @@ angular.module('switchTabsAppAdmin')
       });
 
       return selectedItems.length === $scope.customerLocations.length;
-    }
+    };
 
     var setAllSelected = function (value) {
       angular.forEach($scope.customerLocations, function (location) {
         location.Selected = value;
       });
-    }
+    };
 
+    //Show step 2 view where the user creates questions
+    $scope.newSurvey = function(surveyInfo) {
 
+      if( surveyInfo.$valid ){
+        $scope.processing = true;
 
+        var newSurveyInfo = {
+          name       : $scope.newSurveyName,
+          status     : 'active', // Every survey is active by default
+          surveyKey  : guid() // get Key number
+        };
 
-    $scope.newSurvey = function () {
-      $scope.processing = true;
+        surveys.addSurvey( newSurveyInfo ).then( function(response) {
 
-      var newSurveyInfo = {
-        customerID : $scope.surveyCustomer,// customerID
-        name       : $scope.newSurveyName,
-        status     : 'active' // Every survey is active by default
-      };
+          if ( response.data.status === 'success' ) {
 
+            surveys.getSurveyByKey( newSurveyInfo.surveyKey).then( function(survey) {
+              $scope.showSurveyQuestion = true;
+              $scope.survey = survey.data;
 
+              SURVEY_ID = $scope.survey.id;
 
-      //surveys.addSurvey( newSurveyInfo ).then( function(response) {
+            });
+
+          }//end IF
+
+        });
+      }
+    };
+    //Action from btn
+    $scope.updateSurvey = function(){
+      //Survey Name and Customer
+      if ( $scope.survey.name !== $scope.newSurveyName ){
+        var newSurveyInfo = {
+          name : $scope.newSurveyName
+        };
+
+        surveys.updateSurvey(SURVEY_ID, newSurveyInfo).then( function(response) {
+          console.log('Survey Info updated !');
+        });
+      }
+
+      //Questions
+      saveSurveyQuestions();
       //
-      //  if ( response.data.status === 'success' ) {
-      //
-      //    surveys.getSurveysByCustomer( $scope.surveyCustomer ).then( function(response) {
-      //      $scope.survey = _.last(response.data);
-      //      $scope.showSurveyQuestion = true;
-      //
-      //
-      //      SURVEY_ID = $scope.survey.id;
-      //
-      //
-      //      //Fetch All Locations
-      //      customers.getCustomerLocations( $scope.surveyCustomer ).then( function( locations ) {
-      //        $scope.customerLocations = locations.data;
-      //      });
-      //
-      //    });
-      //
-      //  }//end IF
-      //
-      //});
+      //Survey by Location
+      saveSurveyByLocation();
+
 
     };
+
 
     $scope.addQuestion = function (){
 
@@ -143,17 +154,7 @@ angular.module('switchTabsAppAdmin')
       }
     };
 
-    $scope.saveSurveyQuestions = function() {
-
-      if ( $scope.survey.name !== $scope.newSurveyName || $scope.survey.customerID !== $scope.surveyCustomer ){
-        var newSurveyInfo = {
-          customerID : $scope.surveyCustomer,
-          name : $scope.newSurveyName
-        };
-        surveys.updateSurvey(SURVEY_ID, newSurveyInfo).then( function(response) {
-          console.log('Survey Info updated !');
-        });
-      }
+    function saveSurveyQuestions() {
 
       // For avoid store duplicated questions we need to
       // verify if the questions already stored
@@ -178,8 +179,55 @@ angular.module('switchTabsAppAdmin')
         });
       }
 
-
     };
+
+    function saveSurveyByLocation(){
+      surveyByLocation = _.pluck(_.filter($scope.customerLocations,{'Selected' : true}), 'id'),
+      surveyByLocationStored;
+
+
+      var setSurveyByLocation = function(data){
+        angular.forEach( data, function(locationID){
+          surveys.addSurveyByLocation( SURVEY_ID, locationID).then( function(){
+            surveyByLocationSaved = true;
+            console.log('Done Survey in location');
+
+          });
+        });
+        //Return the location in this survey and saved into the var surveyByLocationStored
+        //in terms to compare it later with the current selected locations
+        getSurveyByLocation();
+
+
+
+      };
+      var getSurveyByLocation = function(){
+        surveys.getSurveyByLocation( SURVEY_ID ).then(function(locations){
+          surveyByLocationStored = _.pluck(_.filter(locations.data), 'locationID');
+        });
+      };
+      var removeSurveyByLocation = function(data){
+        angular.forEach( surveyByLocation, function(locationID){
+          surveys.deleteSurveyByLocation( SURVEY_ID ).then( function(){
+            //After clear the stored locations
+            //now save the new ones
+            surveyByLocationStored = [];
+          });
+        });
+        setSurveyByLocation(surveyByLocation);
+      };
+
+
+      if ( !surveyByLocationSaved ){
+        setSurveyByLocation(surveyByLocation);
+      }
+      else if ( surveyByLocationSaved && surveyByLocation !== surveyByLocationStored ){
+        removeSurveyByLocation(surveyByLocationStored);
+      }
+
+
+      
+    }
     
     $scope.removeQuestion = function(questionIndex) {
       $scope.surveyQuestions.splice(questionIndex, 1);
@@ -187,6 +235,15 @@ angular.module('switchTabsAppAdmin')
 
     $scope.getPartialSrc = function(questionType) {
       return 'surveys/partials/question_type_' + questionType + '.html';
-    }
+    };
+    guid = function() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+    };
 
   }]);

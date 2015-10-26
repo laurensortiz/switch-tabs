@@ -64,7 +64,7 @@ angular.module('switchTabsAppAdmin')
     service.updateSurvey = function (surveyID, newSurveyInfo) {
       var promise = $http({
         method: 'PUT',
-        url: switch_tabs_config.api_server + 'survey/update/' + surveyID,
+        url: switch_tabs_config.api_server + 'survey/update/' + surveyID +'/',
         data: newSurveyInfo
       }).then(function (response) {
         return response;
@@ -83,6 +83,16 @@ angular.module('switchTabsAppAdmin')
       return promise;
     };
 
+    service.getSurveyByKey = function (key) {
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/key/' + key
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
 
 
     service.saveSurveyQuestions = function (surveyQuestions) {
@@ -93,7 +103,6 @@ angular.module('switchTabsAppAdmin')
 
         data: surveyQuestions
       }).then(function (response) {
-        console.log(response);
         return response;
       });
       return promise;
@@ -115,7 +124,37 @@ angular.module('switchTabsAppAdmin')
         method: 'DELETE',
         url: switch_tabs_config.api_server + 'survey/questions/' + surveyID
       }).then(function (response) {
-        console.log(response);
+        return response;
+      });
+      return promise;
+    };
+
+    service.addSurveyByLocation = function ( surveyID, locationID ){
+      var promise = $http({
+        method: 'POST',
+        url: switch_tabs_config.api_server + 'survey/'+ surveyID +'/location/'+locationID+'/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+    service.getSurveyByLocation = function ( surveyID ){
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/location/'+ surveyID +'/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
+
+    service.deleteSurveyByLocation = function (surveyID) {
+
+      var promise = $http({
+        method: 'DELETE',
+        url: switch_tabs_config.api_server + 'survey/location/' + surveyID
+      }).then(function (response) {
         return response;
       });
       return promise;

@@ -18,7 +18,7 @@ $app->get('/location/:id/customer/:customerID',	'getLocationByCustomer');
 
 $app->get('/customers', 'getCustomers');
 $app->get('/customer/:id',	'getCustomer');
-$app->get('/survey/customer/:customerID',	'getSurveyByCustomer');
+//$app->get('/survey/customer/:customerID',	'getSurveyByCustomer');
 $app->post('/survey/save',	'saveAnswers');
 
 
@@ -44,15 +44,22 @@ $app->get('/category/delete/:id/', 'deleteCategory');
 
 $app->get('/surveys', 'getSurveys');
 $app->get('/survey/:id/',	'getSurvey');
+$app->get('/survey/key/:id/',	'getSurveysByKey');
 $app->post('/survey/add', 'addSurvey');
-$app->put('/survey/update/:id', 'updateSurvey');
+$app->put('/survey/update/:id/', 'updateSurvey');
 $app->get('/survey/delete/:id/', 'deleteSurvey');
+
+
 $app->get('/survey/customer/:id/', 'getSurveysByCustomer');
 $app->post('/survey/questions/save', 'saveSurveyQuestions');
 $app->delete('/survey/questions/:surveyID', 'deleteSurveyQuestions');
 $app->get('/survey/questions/:surveyID', 'getSurveyQuestions');
 $app->get('/survey/:surveyID/customer/', 'getSurveyByCustomerAndLocations');
 $app->get('/survey/:surveyID/answers/', 'getSurveyAnswers');
+$app->post('/survey/:surveyID/location/:locationID/', 'addSurveyByLocation');
+$app->get('/survey/location/:id/', 'getSurveyByLocation');
+$app->delete('/survey/location/:id', 'deleteSurveyByLocation');
+
 
 
 
@@ -319,14 +326,14 @@ function addSurvey() {
   $request = Slim::getInstance()->request();
   $survey = json_decode($request->getBody());
 
-  $sql = "INSERT INTO survey (`customerID`,`name`,`status`) VALUES (:customerID, :name, :status)";
+  $sql = "INSERT INTO survey (`name`,`status`,`surveyKey`) VALUES (:name, :status, :surveyKey)";
 
   try {
     $db = getConnection();
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(":customerID", $survey->customerID);
     $stmt->bindValue(":name", $survey->name);
     $stmt->bindValue(":status", $survey->status);
+    $stmt->bindValue(":surveyKey", $survey->surveyKey);
     $stmt->execute();
     $db = null;
     echo '{"status":"success"}';
@@ -352,12 +359,11 @@ function updateSurvey($id) {
 	$request = Slim::getInstance()->request();
 	$body = $request->getBody();
 	$newSurveyInfo = json_decode($body);
-	$sql = "UPDATE survey SET name=:name, customerID=:customerID WHERE id=:id";
+	$sql = "UPDATE survey SET name=:name WHERE id=:id";
 	try {
 		$db = getConnection();
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam("name", $newSurveyInfo->name);
-		$stmt->bindParam("customerID", $newSurveyInfo->customerID);
 
 		$stmt->bindParam("id", $id);
 		$stmt->execute();
@@ -368,6 +374,54 @@ function updateSurvey($id) {
 	}
 }
 
+function addSurveyByLocation($surveyID, $locationID){
+  error_log('addSurvey\n', 3, '/var/tmp/php.log');
+  $request = Slim::getInstance()->request();
+  $surveyLocation = json_decode($request->getBody());
+
+  $sql = "INSERT INTO survey_by_location (`surveyID`,`locationID`) VALUES (:surveyID, :locationID)";
+
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":surveyID", $surveyID);
+    $stmt->bindParam(":locationID", $locationID);
+    $stmt->execute();
+    $db = null;
+    echo '{"status":"success"}';
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function getSurveyByLocation($id) {
+  $sql = "SELECT * FROM survey_by_location WHERE surveyID=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $survey = $stmt->fetchAll();
+    $db = null;
+    echo json_encode($survey);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function deleteSurveyByLocation($id) {
+  $sql = "DELETE FROM survey_by_location WHERE surveyID=:id";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = null;
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
 function getSurveysByCustomer($id) {
   $sql = "SELECT * FROM survey WHERE customerID=:id";
   try {
@@ -376,6 +430,22 @@ function getSurveysByCustomer($id) {
     $stmt->bindParam("id", $id);
     $stmt->execute();
     $customerSurvey = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $db = null;
+    echo json_encode($customerSurvey);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function getSurveysByKey($key) {
+  $sql = "SELECT * FROM survey WHERE surveyKey=:key";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("key", $key);
+    $stmt->execute();
+    $customerSurvey = $stmt->fetchObject();
 
     $db = null;
     echo json_encode($customerSurvey);

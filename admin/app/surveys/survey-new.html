@@ -5,7 +5,7 @@
       <h2><i class="fa fa-list-ul"></i> Nueva Encuesta</h2>
     </header>
     <div class="box-cont">
-      <form name="surveyInitData" ng-submit="surveyInitInfo(surveyInitData)" method="post" class="survey-form" ng-class="{'processing' : processing}">
+      <form name="surveyInitData" ng-submit="newSurvey(surveyInitData)" method="post" class="survey-form" ng-class="{'processing' : processing}">
         <h3>Indicar el nombre de la encuesta</h3>
         <label for="surveyName">
           <input id="surveyName" type="text" value="" ng-model="newSurveyName" name="name" required/>
@@ -24,7 +24,7 @@
   </div><!--End Step 1-->
 
 
-  <div class="step-2 " ng-show="!showSurveyQuestion">
+  <div class="step-2 " ng-show="showSurveyQuestion">
     <form ng-submit="saveSurvey()" name="surveyQuestionsForm" method="post" class="survey-form" ng-class="{'processing' : processing}">
       <header>
         <h2><label for="survey"><span>Encuesta</span>
@@ -93,7 +93,8 @@
             <h4>Publicar</h4>
             <div class="container-fluid text-a-c">
               <button class="btn" ng-click="previewSurvey()" ng-disabled="!hasQuestions">Vista previa</button>
-              <button class="btn secondary green-th" ng-click="saveSurveyQuestions()" ng-disabled="!hasQuestions">Guardar</button>
+              <button class="btn secondary green-th" ng-click="updateSurvey()" ng-disabled="!hasQuestions">Guardar</button>
+              <buton ng-click="info()">info</buton>
             </div>
           </div><!--box-cont-->
           <div class="box-cont no-p">
