@@ -8,7 +8,26 @@ angular.module('switchTabsAppPublic')
 
 
 
+    service.getSurvey = function (id) {
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/' + id + '/',
+        dataType: 'json'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
 
+    service.getSurveyByLocation = function ( surveyID ){
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/location/'+ surveyID +'/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
 
     service.getLocationByCustomer = function (locationID, customerID) {
       var promise = $http({
@@ -39,6 +58,7 @@ angular.module('switchTabsAppPublic')
         method: 'GET',
         url: switch_tabs_config.api_server + 'survey/questions/' + surveyID
       }).then(function (response) {
+        console.log(response);
         return response;
       });
       return promise;
@@ -70,6 +90,8 @@ angular.module('switchTabsAppPublic')
       });
       return promise;
     };
+
+
 
     return service;
   }]);

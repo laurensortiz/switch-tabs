@@ -11,7 +11,9 @@ angular.module('switchTabsAppAdmin')
     $scope.surveyInfo = {};
     $scope.customerInfo = {};
 
+    surveys.getSurveyByLocation( SURVEY_ID).then( function(locations) {
 
+    });
 
     surveys.getSurveyByCustomerAndLocations(SURVEY_ID).then( function(survey) {
       $scope.surveyLocation = survey.data;

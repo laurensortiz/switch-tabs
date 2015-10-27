@@ -37,7 +37,7 @@
 
     <div class="select-survey" ng-show="selectLocation">
       <h2><i class="fa fa-question-circle"></i> Seleccionar la tienda o área a evaluar</h2>
-      <button ng-repeat="location in surveyInfo" ng-click="$parent.loadQuestions(location.locationID)" class="btn cta-location">{{location.store}} <span>{{location.area}}</span></button>
+      <button ng-repeat="location in surveyInfo" ng-click="$parent.loadQuestions(location.id)" class="btn cta-location">{{location.store}} <span>{{location.area}}</span></button>
 
     </div>
 

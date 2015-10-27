@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('switchTabsAppAdmin')
+angular.module('switchTabsAppPublic')
   .factory('customers', function ($http, $q, $rootScope) {
     // Public API here
     var service = {},

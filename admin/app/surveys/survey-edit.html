@@ -1,40 +1,16 @@
 <div class="survey container">
 
-  <div class="step-1" ng-show="!showSurveyQuestion">
-    <header>
-      <h2><i class="fa fa-list-ul"></i> Nueva Encuesta</h2>
-    </header>
-    <div class="box-cont">
-      <form name="surveyInitData" ng-submit="newSurvey(surveyInitData)" method="post" class="survey-form" ng-class="{'processing' : processing}">
-        <h3>Indicar el nombre de la encuesta</h3>
-        <label for="surveyName">
-          <input id="surveyName" type="text" value="" ng-model="newSurveyName" name="name" required/>
-        </label>
-        <h3>Seleccionar el cliente</h3>
-        <label for="surveyCustomer">
-          <select name="customerID" id="surveyCustomer" ng-model="surveyCustomer" ng-init="surveyCustomer = option[0].value" ng-options="option.id as option.name for option in customerList" required>
-            <option value="" ng-selected="true"></option>
-            <!--<option ng-repeat="option in customerList" value="{{option.id}}">{{option.name}}</option>-->
-          </select>
-        </label>
-        <button ng-disabled="processing" ng-click="submitted = true" class="btn secondary green-th" type="submit" title="Siguiente"><i class="fa fa-circle-o-notch fa-spin"></i><i class="fa fa-plus-circle"></i> Siguiente</button>
 
-      </form>
-    </div>
-  </div><!--End Step 1-->
-
-
-  <div class="step-2 " ng-show="showSurveyQuestion">
     <form ng-submit="saveSurvey()" name="surveyQuestionsForm" method="post" class="survey-form" ng-class="{'processing' : processing}">
       <header>
         <h2><label for="survey"><span>Encuesta</span>
-          <input id="survey" type="text" value="{{newSurveyName}}" ng-model="newSurveyName" name="name"/>
+          <input id="survey" type="text" value="{surveyName}}" ng-model="surveyName" name="name"/>
           <i class="fa fa-pencil-square"></i>
           </label>
         </h2>
         <h3><label for="customer"><span>Cliente</span>
           <select id="customer" name="customerID" ng-model="surveyCustomer">
-            <option ng-repeat="option in customerList" value="{{option.id}}">{{option.name}}</option>
+            <option ng-repeat="option in customerList" value="{{option.id}}" ng-selected="">{{option.name}}</option>
           </select>
           <i class="fa fa-pencil-square"></i>
         </label>
@@ -68,18 +44,19 @@
             <div class="create-question">
               <label for="question" class="question">
                 <span><i class="fa fa-question-circle"></i> Pregunta</span>
-                <input id="question" type="text" value="" ng-model="tempQuestion" required/>
+                <input id="question" type="text" value="" ng-model="tempQuestion"/>
               </label>
               <label for="category" class="category">
                 <span><i class="fa fa-share-alt"></i> Categoría</span>
-                <select id="category" name="category" ng-model="tempCategory" required>
-                  <option ng-repeat="category in categoryList" ng-value="category.id">{{category.name}}</option>
+                <select id="category" name="category" ng-model="tempCategory">
+                  <option ng-repeat="category in categoryList" ng-value="{{category.id}}">{{category.name}}</option>
                 </select>
               </label>
               <label for="questionType" class="question-type">
                 <span><i class="fa fa-th-large"></i> Tipo de pregunta</span>
-                <select id="questionType" name="questionType" ng-model="tempType" required>
-                  <option ng-repeat="type in settings.questionsType" ng-value="type.name">{{type.name}}</option>
+                <select id="questionType" name="questionType" ng-model="tempType">
+                  <option value="" selected></option>
+                  <option ng-repeat="type in settings.questionsType" ng-value="{{type.name}}">{{type.name}}</option>
                 </select>
               </label>
               <button class="btn secondary" ng-click="addQuestion()">Agregar Pregunta</button>
@@ -95,7 +72,6 @@
             <div class="container-fluid text-a-c">
               <button class="btn" ng-click="previewSurvey()" ng-disabled="!hasQuestions">Vista previa</button>
               <button class="btn secondary green-th" ng-click="updateSurvey()" ng-disabled="!hasQuestions">Guardar</button>
-              <buton ng-click="info()">info</buton>
             </div>
           </div><!--box-cont-->
           <div class="box-cont no-p">
@@ -114,6 +90,6 @@
 
 
     </form>
-  </div><!--End Step 2-->
+
 
 </div>

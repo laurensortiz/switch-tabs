@@ -64,6 +64,12 @@ angular
         controllerAs  : 'surveyDetail',
         label         : 'Detalle de la Encuesta'
       })
+      .when('/survey/edit/:id', {
+        templateUrl   : 'surveys/survey-edit.html',
+        controller    : 'surveyEditCtrl',
+        controllerAs  : 'surveyEdit',
+        label         : 'Editar Encuesta'
+      })
       .when('/survey/new', {
         templateUrl   : 'surveys/survey-new.html',
         controller    : 'surveyNewCtrl',

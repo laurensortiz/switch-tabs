@@ -15,6 +15,8 @@ $app = new Slim();
 
 //Global
 $app->get('/location/:id/customer/:customerID',	'getLocationByCustomer');
+$app->get('/location/:id/customer/',	'getCustomerByLocation');
+
 
 $app->get('/customers', 'getCustomers');
 $app->get('/customer/:id',	'getCustomer');
@@ -28,7 +30,7 @@ $app->post('/survey/save',	'saveAnswers');
 $app->get('/admin', 'login');
 
 $app->get('/customer/:id/locations', 'getCustomerLocations');
-$app->get('/customer/:id/survey', 'getCustomerSurvey');
+//$app->get('/customer/:id/survey', 'getCustomerSurvey');
 $app->get('/survey/location/:id/answers/',	'getSurveyAnswersByLocation');
 
 $app->post('/customer/add', 'addCustomer');
@@ -170,6 +172,23 @@ function getLocationByCustomer($locationID, $customerID) {
     $stmt = $db->prepare($sql);
     $stmt->bindParam("id", $locationID);
     $stmt->bindParam("idCustomer", $customerID);
+
+    $stmt->execute();
+    $customer = $stmt->fetchObject();
+    $db = null;
+
+    echo json_encode($customer);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+
+function getCustomerByLocation($locationID) {
+  $sql = "SELECT idCustomer FROM location WHERE id=:id ";
+  try {
+    $db = getConnection();
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $locationID);
 
     $stmt->execute();
     $customer = $stmt->fetchObject();
@@ -505,14 +524,14 @@ function deleteSurveyQuestions($surveyID) {
 function getSurveyQuestions( $surveyID ) {
   //$sql = "SELECT id FROM survey WHERE customerID =:customerID AND status = 'active'";
   $sql = "SELECT Q.id as id, Q.question as question, Q.categoryID as questionCategoryID, Q.type as questionType, Ct.name as questionCategory
-          FROM questions Q, category Ct
-          WHERE Q.surveyID =:surveyID AND Ct.id = Q.categoryID";
+       FROM questions Q LEFT JOIN category Ct ON Q.categoryID = Ct.id
+       WHERE Q.surveyID = :surveyID";
   try {
     $db = getConnection();
     $stmt = $db->prepare($sql);
     $stmt->bindParam("surveyID", $surveyID);
     $stmt->execute();
-    $survey = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $survey = $stmt->fetchAll();
     $db = null;
 
     echo json_encode($survey);

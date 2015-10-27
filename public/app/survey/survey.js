@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('switchTabsAppPublic')
-  .controller('surveyCtrl', ['$scope', '$timeout', '$routeParams', 'surveys', function ($scope, $timeout, $routeParams, surveys) {
+  .controller('surveyCtrl', ['$scope', '$timeout', '$routeParams', 'surveys', 'customers', function ($scope, $timeout, $routeParams, surveys, customers) {
 
     var SURVEY_ID = $routeParams.survey,
         LOCATION_ID;
@@ -16,6 +16,7 @@ angular.module('switchTabsAppPublic')
     $scope.saveAnswer = [];
     $scope.currentStep = 1;
     $scope.numberOfQuestions = 0;
+    $scope.surveyInfo = [];
 
 
     //Handler Messages and alerts
@@ -30,24 +31,72 @@ angular.module('switchTabsAppPublic')
       SURVEY_ID = surveyID || $scope.surveyID;
       $scope.proccessing = true;
 
-      surveys.getSurveyByCustomerAndLocations( SURVEY_ID ).then( function(response) {
-        $scope.proccessing = false;
+      //Fetch surveyInfo
+      surveys.getSurvey( SURVEY_ID ).then( function(survey) {
+        if ( survey.data !== 'false' ) {
+          $scope.surveyName = survey.data.name;
+          //Fetch All locations from survey
+          surveys.getSurveyByLocation( SURVEY_ID ).then( function(locations){
 
-        if ( response.data.length > 0 ){
-          $scope.surveyNotSelected = false;
-          $scope.surveyVerify = true;
-          $scope.surveyInfo = response.data;
-          $scope.surveyName = response.data[0].surveyName;
-          $scope.customerName = response.data[0].customerName;
+            $scope.surveyLocation = locations.data;
 
+
+            //Get the customer info from one locationID locations.data[firstLocation = 0]
+            customers.getCustomerByLocation( locations.data[0].locationID).then( function(customer){
+              customers.getCustomerInfo( customer.data.idCustomer ).then(function(customerInfo){
+                $scope.customerName =  customerInfo.name;
+                $scope.surveyCustomerID = customerInfo.id;
+
+                angular.forEach( $scope.surveyLocation, function (val, key){
+                  _.filter(customerInfo.locations, function(value, key){
+                    if (value.id === val.locationID ) {
+                      $scope.surveyInfo.push(customerInfo.locations[key]);
+
+                    }
+
+                  });
+
+                });
+
+                console.log( $scope.surveyInfo);
+
+                $scope.surveyNotSelected = false;
+                $scope.surveyVerify = true;
+              });
+
+
+            });
+          });
         }
         else {
           $scope.errorText = 'Encuesta no existe';
-          $timeout(function() {
+          $timeout( function() {
             $scope.errorText = '';
           },3000);
         }
+
       });
+
+
+
+      //surveys.getSurveyByCustomerAndLocations( SURVEY_ID ).then( function(response) {
+      //  $scope.proccessing = false;
+      //
+      //  if ( response.data.length > 0 ) {
+      //    $scope.surveyNotSelected = false;
+      //    $scope.surveyVerify = true;
+      //    $scope.surveyInfo = response.data;
+      //    $scope.surveyName = response.data[0].surveyName;
+      //    $scope.customerName = response.data[0].customerName;
+      //
+      //  }
+      //  else {
+      //    $scope.errorText = 'Encuesta no existe';
+      //    $timeout( function() {
+      //      $scope.errorText = '';
+      //    },3000);
+      //  }
+      //});
 
     };
 
