@@ -148,6 +148,15 @@ angular.module('switchTabsAppAdmin')
       });
       return promise;
     };
+    service.getSurveysByLocation = function (  ){
+      var promise = $http({
+        method: 'GET',
+        url: switch_tabs_config.api_server + 'survey/location/all/'
+      }).then(function (response) {
+        return response;
+      });
+      return promise;
+    };
 
     service.deleteSurveyByLocation = function (surveyID) {
 

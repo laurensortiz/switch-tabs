@@ -266,3 +266,16 @@
     background-size: 100% auto;
   }
 }
+
+.gender{
+  font-size: 80px;
+  line-height: 101px;
+  color: #fff;
+
+  &.g-f{
+    background-color: #d38ab7;
+  }
+  &.g-m{
+    background-color: #6995ee;
+  }
+}

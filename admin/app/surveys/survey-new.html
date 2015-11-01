@@ -49,13 +49,13 @@
             <div class="questions-list-container">
               <p ng-hide="hasQuestions"><i class="fa fa-exclamation-circle"></i> Aún no hay preguntas en la encuesta</p>
               <ol class="question-list" ng-show="hasQuestions">
-                <li ng-repeat="question in surveyQuestions">
+                <li ng-repeat="question in surveyQuestions" ng-class="{'question-editing' : editingQuestion.questionIndex == $index}">
                   <div class="col-3-4">
                     <span class="item md">{{question.question}}</span>
                     <span class="item sm q-t" ng-include="getPartialSrc(question.type)"></span>
                   </div>
                   <div class="col-1-4 actions-links">
-                    <a ng-href="/admin/category/{{category.id}}/edit" title="Editar"><i class="fa fa-pencil"></i></a>
+                    <a ng-click="editQuestion($index)" title="Editar"><i class="fa fa-pencil"></i></a>
                     <a ng-click="removeQuestion($index)" title="Borrar"><i class="fa fa-trash-o"></i></a>
                   </div>
                 </li>
@@ -64,25 +64,31 @@
 
           </div>
           <div class="box-cont">
-            <h3>Crear preguntas</h3>
+            <h3><span ng-show="editingQuestion.status" class="editing-question-title">Editar Pregunta</span><span ng-show="!editingQuestion.status">Crear Pregunta</span></h3>
             <div class="create-question">
               <label for="question" class="question">
                 <span><i class="fa fa-question-circle"></i> Pregunta</span>
-                <input id="question" type="text" value="" ng-model="tempQuestion" required/>
+                <input id="question" type="text" value="" ng-model="tempQuestion"/>
               </label>
               <label for="category" class="category">
                 <span><i class="fa fa-share-alt"></i> Categoría</span>
-                <select id="category" name="category" ng-model="tempCategory" required>
-                  <option ng-repeat="category in categoryList" ng-value="category.id">{{category.name}}</option>
+                <select id="category" name="category" ng-model="tempCategory">
+                  <option ng-repeat="category in categoryList.category" value="{{category.id}}" ng-selected="category.id == tempCategory">{{category.name}}</option>
                 </select>
               </label>
               <label for="questionType" class="question-type">
                 <span><i class="fa fa-th-large"></i> Tipo de pregunta</span>
-                <select id="questionType" name="questionType" ng-model="tempType" required>
-                  <option ng-repeat="type in settings.questionsType" ng-value="type.name">{{type.name}}</option>
+                <select id="questionType" name="questionType" ng-model="tempType">
+                  <option value="" selected></option>
+                  <option ng-repeat="type in settings.questionsType" value="{{type.name}}" ng-selected="type.name == tempType">{{type.name}}</option>
                 </select>
               </label>
-              <button class="btn secondary" ng-click="addQuestion()">Agregar Pregunta</button>
+              <span ng-show="editingQuestion.status">
+                <button  class="btn secondary green-th" ng-click="updateQuestion(editingQuestion.questionIndex)">Actualizar Pregunta</button>
+              </span>
+              <span ng-hide="editingQuestion.status">
+                <button  class="btn secondary" ng-click="addQuestion()">Agregar Pregunta</button>
+              </span>
 
             </div>
           </div>
@@ -93,9 +99,8 @@
           <div class="box-cont no-p">
             <h4>Publicar</h4>
             <div class="container-fluid text-a-c">
-              <button class="btn" ng-click="previewSurvey()" ng-disabled="!hasQuestions">Vista previa</button>
+              <a class="btn" ng-href="http://app.switchtabs.com/#/?survey={{survey.id}}" target="_blank" ng-disabled="!hasQuestions">Vista previa</a>
               <button class="btn secondary green-th" ng-click="updateSurvey()" ng-disabled="!hasQuestions">Guardar</button>
-              <buton ng-click="info()">info</buton>
             </div>
           </div><!--box-cont-->
           <div class="box-cont no-p">
@@ -104,7 +109,7 @@
               <dl class="list-locations">
                 <li><label for="location-all"><input id="location-all" type="checkbox" ng-model="selectAll" ng-model-options="{ getterSetter : true}" /> Todas</label></li>
                 <li ng-repeat="location in customerLocations">
-                  <input id="location-{{location.id}}" type="checkbox" value="{{location.id}}"  ng-model="location.Selected" ng-init="location.Selected"  /> <label for="location-{{location.id}}">{{location.store}} <span class="location-area"> / {{location.area}}</span></label>
+                  <input id="location-{{location.id}}" type="checkbox" value="{{location.id}}"  ng-model="location.Selected" ng-init="location.Selected = true"  /> <label for="location-{{location.id}}">{{location.store}} <span class="location-area"> / {{location.area}}</span></label>
                 </li>
               </dl>
             </div>

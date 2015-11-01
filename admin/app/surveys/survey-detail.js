@@ -10,27 +10,75 @@ angular.module('switchTabsAppAdmin')
 
     $scope.surveyInfo = {};
     $scope.customerInfo = {};
+    $scope.surveyLocation = [];
+    $scope.hasQuestions = false;
 
-    surveys.getSurveyByLocation( SURVEY_ID).then( function(locations) {
+    //Fetch surveyInfo
+    surveys.getSurvey( SURVEY_ID ).then( function(survey) {
 
-    });
+      $scope.surveyInfo = survey.data;
 
-    surveys.getSurveyByCustomerAndLocations(SURVEY_ID).then( function(survey) {
-      $scope.surveyLocation = survey.data;
-
-      $scope.customerInfo = {
-        name : survey.data[0].customerName
-      };
-      $scope.surveyInfo = {
-        name :  survey.data[0].surveyName,
-        date :  survey.data[0].surveyDate
-
-      };
+      console.log($scope.surveyInfo);
 
     });
-    
+
+    //Fetch All locations from survey
+    surveys.getSurveyByLocation( SURVEY_ID ).then( function(locations){
+
+      $scope.locationsActiveInSurvey = locations.data;
+
+
+      //Get the customer info from one locationID locations.data[firstLocation = 0]
+      customers.getCustomerByLocation( locations.data[0].locationID).then( function(customer){
+
+        customers.getCustomerInfo( customer.data.idCustomer ).then(function(customerInfo){
+          
+          $scope.customerInfo = {
+            name  : customerInfo.name,
+            id    : customerInfo.id
+          };
+
+        });
+        
+      });
+    });
+
+    //Fetch All locations from survey
+    surveys.getSurveyByLocation( SURVEY_ID ).then( function(locations){
+
+      $scope.customerLocation = locations.data;
+
+
+      //Get the customer info from one locationID locations.data[firstLocation = 0]
+      customers.getCustomerByLocation( locations.data[0].locationID).then( function(customer){
+        customers.getCustomerInfo( customer.data.idCustomer ).then(function(customerInfo){
+          $scope.customerName =  customerInfo.name;
+          $scope.surveyCustomerID = customerInfo.id;
+
+          angular.forEach( $scope.customerLocation, function (val, key){
+            _.filter(customerInfo.locations, function(value, key){
+
+              if (value.id === val.locationID ) {
+                $scope.surveyLocation.push(customerInfo.locations[key]);
+
+              }
+
+            });
+
+          });
+        });
+      });
+    });
+
+
     surveys.getSurveyQuestions(SURVEY_ID).then( function (questions){
-      $scope.questions = questions.data;
+
+      if( questions.data.length > 0 ){
+        $scope.questions = questions.data;
+
+      }
+
+
     });
 
     surveys.getSurveyAnswers(SURVEY_ID).then( function (answers){
@@ -45,6 +93,13 @@ angular.module('switchTabsAppAdmin')
 
       $scope.answers = result;
       $scope.surveyInfo.numberAnswers = $scope.answers.length;
+
+      if ( result.length ){
+        $scope.hasQuestions = true;
+      }
+      else {
+        $scope.hasQuestions = false;
+      }
 
       listAnswers($scope.answers);
 

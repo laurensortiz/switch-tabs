@@ -21,17 +21,24 @@ angular.module('switchTabsAppAdmin')
     $scope.survey = {};
     $scope.surveyQuestions = [];
     $scope.customerLocations = [];
+    $scope.editingQuestion = {
+      status : false,
+      questionIndex : null
+    };
 
     $scope.hasQuestions = false;
 
     //Default Settings
     $scope.settings = {
       questionsType : {
-      '1': {
-        name : 'polar'
-      },
-      '2': {
-        name : 'multiple'
+        '1': {
+          name : 'polar'
+        },
+        '2': {
+          name : 'multiple'
+        },
+        '3': {
+          name : 'genero'
         }
       }
     };
@@ -98,7 +105,7 @@ angular.module('switchTabsAppAdmin')
 
     //Fetch All Categories
     categories.getAllCategories().then(function (categories) {
-      $scope.categoryList = categories.data.category;
+      $scope.categoryList = categories.data;
     });
     
     //Fetch the new locations on selection Customer 
@@ -195,7 +202,7 @@ angular.module('switchTabsAppAdmin')
     };
 
 
-    $scope.addQuestion = function (){
+    $scope.addQuestion = function (insertInPosition){
 
       if ( $scope.tempQuestion === undefined ||  $scope.tempCategory === undefined ||  $scope.tempType === undefined){
         $rootScope.notification['text'] = 'Pregunta Incompleta';
@@ -211,15 +218,62 @@ angular.module('switchTabsAppAdmin')
           type        : $scope.tempType
         };
 
-        $scope.surveyQuestions.push(questionData);
+        if ( insertInPosition ){
+          $scope.surveyQuestions.splice(insertInPosition, 0, questionData);
+        }
+        else {
+          $scope.surveyQuestions.push(questionData);
+        }
 
-        console.log($scope.surveyQuestions);
+
+
 
         //Clear inputs under create a question
         $scope.tempQuestion = undefined;
         $scope.tempCategory = undefined;
         $scope.tempType = undefined;
       }
+    };
+
+    $scope.removeQuestion = function(questionIndex) {
+      $scope.surveyQuestions.splice(questionIndex, 1);
+    };
+
+    $scope.editQuestion = function($index){
+
+
+
+      $scope.editingQuestion = {
+        status : true,
+        questionIndex : $index
+      };
+
+      var questionSelected = $scope.surveyQuestions[$index];
+
+      var questionData = {
+        question : questionSelected.question,
+        categoryID : questionSelected.categoryID,
+        type : questionSelected.type
+      };
+
+      $scope.tempQuestion = questionData.question;
+      $scope.tempCategory = questionData.categoryID;
+      $scope.tempType = questionData.type;
+
+    };
+
+
+    $scope.updateQuestion = function($index){
+
+      $scope.removeQuestion($index);
+      $scope.addQuestion($index);
+
+      $scope.editingQuestion = {
+        status : false,
+        questionIndex : null
+      };
+      $rootScope.notification['text'] = 'Pregunta modificada';
+      $rootScope.notification['type'] = 'success';
     };
 
     function saveSurveyQuestions() {
@@ -298,9 +352,7 @@ angular.module('switchTabsAppAdmin')
       
     }
     
-    $scope.removeQuestion = function(questionIndex) {
-      $scope.surveyQuestions.splice(questionIndex, 1);
-    };
+
 
     $scope.getPartialSrc = function(questionType) {
       return 'surveys/partials/question_type_' + questionType + '.html';

@@ -60,6 +60,7 @@ $app->get('/survey/:surveyID/customer/', 'getSurveyByCustomerAndLocations');
 $app->get('/survey/:surveyID/answers/', 'getSurveyAnswers');
 $app->post('/survey/:surveyID/location/:locationID/', 'addSurveyByLocation');
 $app->get('/survey/location/:id/', 'getSurveyByLocation');
+$app->get('/survey/location/all/', 'getSurveysByLocation');
 $app->delete('/survey/location/:id', 'deleteSurveyByLocation');
 
 
@@ -427,6 +428,24 @@ function getSurveyByLocation($id) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 }
+
+function getSurveysByLocation() {
+
+  $sql = "select * FROM survey_by_location";
+  try {
+
+    $db = getConnection();
+    $stmt = $db->query($sql);
+
+    $surveys = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $db = null;
+    echo '{"surveysLocations": ' . json_encode($surveys) . '}';
+    //echo json_encode($customers);
+  } catch(PDOException $e) {
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+}
+//
 
 function deleteSurveyByLocation($id) {
   $sql = "DELETE FROM survey_by_location WHERE surveyID=:id";

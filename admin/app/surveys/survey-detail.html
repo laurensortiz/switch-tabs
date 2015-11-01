@@ -13,7 +13,7 @@
         <div class="container-fluid text-a-c">
           <p>Por tienda:</p>
           <ul class="filter-group">
-            <li ng-repeat="location in surveyLocation"><label for="location{{location.locationID}}"><input id="location{{location.locationID}}" type="checkbox" ng-model="filterLocation[location.locationID]" ng-change="filterLocationSelected(location.locationID)"/>{{location.store}} <span>{{location.area}}</span></label></li>
+            <li ng-repeat="location in surveyLocation"><label for="location{{location.id}}"><input id="location{{location.id}}" type="checkbox" ng-model="filterLocation[location.id]" ng-change="filterLocationSelected(location.id)"/>{{location.store}} <span>{{location.area}}</span></label></li>
           </ul>
           <p>Otros:</p>
         </div>
@@ -25,7 +25,7 @@
       <div class="box-cont no-p">
         <h4>Creada</h4>
         <div class="container-fluid text-a-c">
-          <i class="fa fa-calendar"></i> {{surveyInfo.date}}
+          <i class="fa fa-calendar"></i> {{surveyInfo.Date}}
         </div>
         <h4>Respuestas</h4>
         <div class="container-fluid text-a-c">
@@ -38,8 +38,11 @@
 
 
 
-  <div class="box-cont">
-    <table id="printArea" ng-table="surveyDetail.tableParams" class="table table-condensed table-bordered table-striped table-answers export-table">
+  <div class="box-cont" ng-class="{'warning' : !hasQuestions}">
+    <p ng-hide="hasQuestions"><i class="fa fa-exclamation-circle"></i> Aún no hay respuestas en la encuesta</p>
+
+
+    <table ng-hide="!hasQuestions" id="printArea" ng-table="surveyDetail.tableParams" class="table table-condensed table-bordered table-striped table-answers export-table">
       <thead>
       <th ng-repeat="question in questions">{{question.question}}</th>
       <th><i class="fa fa-calendar"></i> Fecha de Registro</th>

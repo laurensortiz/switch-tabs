@@ -79,25 +79,6 @@ angular.module('switchTabsAppPublic')
 
 
 
-      //surveys.getSurveyByCustomerAndLocations( SURVEY_ID ).then( function(response) {
-      //  $scope.proccessing = false;
-      //
-      //  if ( response.data.length > 0 ) {
-      //    $scope.surveyNotSelected = false;
-      //    $scope.surveyVerify = true;
-      //    $scope.surveyInfo = response.data;
-      //    $scope.surveyName = response.data[0].surveyName;
-      //    $scope.customerName = response.data[0].customerName;
-      //
-      //  }
-      //  else {
-      //    $scope.errorText = 'Encuesta no existe';
-      //    $timeout( function() {
-      //      $scope.errorText = '';
-      //    },3000);
-      //  }
-      //});
-
     };
 
     //Survey not indicated
@@ -201,6 +182,12 @@ angular.module('switchTabsAppPublic')
         case 'malo':
         case 'no':
           colorAnswer = '#dd0717';
+          break;
+        case 'mujer':
+          colorAnswer = '#d38ab7';
+          break;
+        case 'hombre':
+          colorAnswer = '#6995ee';
           break;
         default :
           colorAnswer = '#fff';

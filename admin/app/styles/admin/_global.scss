@@ -60,7 +60,9 @@ table{
     font-family: 'kelson_sansbold', sans-serif;
   }
 }
-
+option[value^=\?]{
+  display: none;
+}
 ul{
   padding: 0;
   margin: 0;

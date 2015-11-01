@@ -21,6 +21,12 @@
         <a class="bad animated zoomIn" data-answer="no" ng-click="saveAnswers(question.id,'no')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
       </div>
     </div>
+    <div class="customer-answer" ng-show="question.questionType === 'genero'">
+      <div class="answer-options">
+        <a class="gender g-f animated zoomIn" data-answer="mujer" ng-click="saveAnswers(question.id,'mujer')"><i class="fa fa-female gender"></i></a>
+        <a class="gender g-m animated zoomIn" data-answer="hombre" ng-click="saveAnswers(question.id,'hombre')"><i class="fa fa-male gender"></i></a>
+      </div>
+    </div>
   </div>
   <div class="step thanks" ng-class="{current:pollCompleted}">
     <div class="thanksTxt">
