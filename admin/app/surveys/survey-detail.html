@@ -65,7 +65,12 @@
 
   </div>
 
-  <div class="box-cont">
+  <div class="box-cont survey-container">
+    <div class="chart-info">
+      <ul>
+        <li ng-repeat="chartInfo in chartData"> <span style="color:{{chartInfo.color}}"><i class="fa fa-pie-chart"></i> {{chartInfo.value}}</span> {{chartInfo.label}}</li>
+      </ul>
+    </div>
     <canvas id="surveyChart">
     </canvas>
   </div>

@@ -6,7 +6,6 @@ angular.module('switchTabsAppAdmin')
     var self = this,
         surveyData = [],
         surveyAnswers = {},
-        chartData,
         SURVEY_ID = $routeParams.id;
     //Charts
     var ctx  = document.getElementById('surveyChart').getContext('2d');
@@ -107,9 +106,7 @@ angular.module('switchTabsAppAdmin')
 
       var group = _.groupBy(_.flatten(_.pluck(_.map($scope.answers),'answers')), 'answer');
 
-     
-
-      chartData = _.transform(group, function (result, val, key) {
+      $scope.chartData = _.transform(group, function (result, val, key) {
 
         val.value = _.size(val);
         val.label = key.toLowerCase();
@@ -120,10 +117,12 @@ angular.module('switchTabsAppAdmin')
 
 
       var options = {
-        scaleBeginAtZero : true
+        scaleBeginAtZero : true,
+        animationEasing : 'easeInOutQuint',
+        animateScale : true
       };
 
-      new Chart(ctx).PolarArea(_.values(chartData), options);
+      new Chart(ctx).PolarArea(_.values($scope.chartData), options);
 
 
 
