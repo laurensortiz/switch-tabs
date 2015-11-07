@@ -144,3 +144,38 @@
 .editing-question-title{
   color: $green;
 }
+
+form{
+
+  input[type="text"]{
+   
+  }
+
+}
+
+
+@media print {
+  main{
+    padding-left: 0;
+  }
+  .main-content{
+    padding-top: 0;
+  }
+  .main-aside, .top-nav, .bubble-results,.filter, .ng-table-counts, .add-btn{
+    display: none;
+  }
+
+  .aside{
+    .box-cont{
+      @include clearfix;
+    }
+    .info-item{
+      width: 50%;
+      float: left;
+    }
+  }
+
+  .box-cont{
+    box-shadow :0;
+  }
+}

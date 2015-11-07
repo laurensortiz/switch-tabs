@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('switchTabsAppAdmin')
-  .controller('surveyDetailCtrl', ['$scope', '$location', '$window', '$routeParams', 'NgTableParams', 'surveys', 'customers', function ( $scope, $location, $window, $routeParams, NgTableParams, surveys, customers ) {
+  .controller('surveyDetailCtrl', ['$scope', '$location', '$window', '$timeout', '$routeParams', 'NgTableParams', 'surveys', 'customers', function ( $scope, $location, $window, $timeout, $routeParams, NgTableParams, surveys, customers ) {
 
     var self = this,
         surveyData = [],
         surveyAnswers = {},
+        chartData,
         SURVEY_ID = $routeParams.id;
+    //Charts
+    var ctx  = document.getElementById('surveyChart').getContext('2d');
 
     $scope.surveyInfo = {};
     $scope.customerInfo = {};
@@ -18,7 +21,7 @@ angular.module('switchTabsAppAdmin')
 
       $scope.surveyInfo = survey.data;
 
-      console.log($scope.surveyInfo);
+
 
     });
 
@@ -78,7 +81,6 @@ angular.module('switchTabsAppAdmin')
 
       }
 
-
     });
 
     surveys.getSurveyAnswers(SURVEY_ID).then( function (answers){
@@ -103,7 +105,26 @@ angular.module('switchTabsAppAdmin')
 
       listAnswers($scope.answers);
 
-      console.log($scope.answers);
+      var group = _.groupBy(_.flatten(_.pluck(_.map($scope.answers),'answers')), 'answer');
+
+     
+
+      chartData = _.transform(group, function (result, val, key) {
+
+        val.value = _.size(val);
+        val.label = key.toLowerCase();
+        val.color = Answer[key];
+
+        result[key.toLowerCase()] = val;
+      });
+
+
+      var options = {
+        scaleBeginAtZero : true
+      };
+
+      new Chart(ctx).PolarArea(_.values(chartData), options);
+
 
 
     });
@@ -126,13 +147,31 @@ angular.module('switchTabsAppAdmin')
     };
     
     //Filters
+    
+
+    $scope.filterLocationSelected = function(locationID){
+      console.log(locationID);
+
+      console.log($scope.answers);
+
+      //angular.forEach($scope.filterLocation, function (location) {
+      //  console.log(location);
+      //});
+
+     
+
+    };
+
+
+
+
+
 
 
     $scope.printReport = function(){
-      var table = document.getElementById('printArea').innerHTML;
-      var myWindow = $window.open('', '', 'width=800, height=600');
-      myWindow.document.write(table);
-      myWindow.print();
+      $timeout(function() {
+        $window.print();
+      })
     };
 
 

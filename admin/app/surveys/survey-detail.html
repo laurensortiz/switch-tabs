@@ -9,28 +9,36 @@
     <div class="col-3-4">
 
       <div class="box-cont filter no-p">
+        <form action="">
         <h4>Filtro</h4>
         <div class="container-fluid text-a-c">
           <p>Por tienda:</p>
           <ul class="filter-group">
-            <li ng-repeat="location in surveyLocation"><label for="location{{location.id}}"><input id="location{{location.id}}" type="checkbox" ng-model="filterLocation[location.id]" ng-change="filterLocationSelected(location.id)"/>{{location.store}} <span>{{location.area}}</span></label></li>
+            <li ng-repeat="location in surveyLocation"><label for="location{{location.id}}"><input id="location{{location.id}}" type="checkbox" ng-model="filterLocation.Selected" ng-change="filterLocationSelected(location.id)"/>{{location.store}} <span>{{location.area}}</span></label></li>
           </ul>
-          <p>Otros:</p>
-        </div>
+          <p>Por respuesta:</p>
 
+          <input class="input-search" type="text" ng-model="searchText" placeholder="Ej. Bueno">
+        </div>
+        </form>
       </div>
     </div>
 
     <div class="col-1-4 aside">
       <div class="box-cont no-p">
-        <h4>Creada</h4>
-        <div class="container-fluid text-a-c">
-          <i class="fa fa-calendar"></i> {{surveyInfo.Date}}
+        <div class="info-item">
+          <h4>Creada</h4>
+          <div class="container-fluid text-a-c">
+            <i class="fa fa-calendar"></i> {{surveyInfo.Date}}
+          </div>
         </div>
-        <h4>Respuestas</h4>
-        <div class="container-fluid text-a-c">
-           <i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}
+        <div class="info-item">
+          <h4>Respuestas</h4>
+          <div class="container-fluid text-a-c">
+            <i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}
+          </div>
         </div>
+
       </div><!--box-cont-->
 
     </div>
@@ -48,7 +56,7 @@
       <th><i class="fa fa-calendar"></i> Fecha de Registro</th>
       </thead>
       <tbody>
-      <tr ng-repeat="answers in $data">
+      <tr ng-repeat="answers in $data | filter:searchText">
           <td ng-repeat="answer in answers.answers">{{answer.answer}} {{getObj(answers.answers)}}</td>
           <td>{{answers.date}}</td>
         </tr>
@@ -56,9 +64,18 @@
     </table>
 
   </div>
+
+  <div class="box-cont">
+    <canvas id="surveyChart">
+    </canvas>
+  </div>
 </div>
+
+
+
+
 <!--Create Customer Btn-->
 {{exportConfig}}
-<button id="downloadReport" class="add-btn" onClick ="$('#printArea').tableExport({tableName:'Reporte',type:'pdf',pdfFontSize:10,pdfLeftMargin:20,escape:'false',htmlContent:'false'});" title="Descargar datos"><i class="fa fa-download"></i></button>
+<button id="downloadReport" class="add-btn" ng-click="printReport();" title="Descargar datos"><i class="fa fa-download"></i></button>
 <!--/Create Customer Btn-->
 

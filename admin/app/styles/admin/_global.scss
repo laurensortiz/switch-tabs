@@ -106,6 +106,10 @@ a{
   }
 }
 
+canvas{
+  width: 100%!important;
+}
+
 main{
   padding-left: 260px;
 }
@@ -353,7 +357,6 @@ form{
     h2, h3{
       @include clearfix;
     }
-
     h2 input[type="text"],
     h3 select{
       background-color: transparent;
