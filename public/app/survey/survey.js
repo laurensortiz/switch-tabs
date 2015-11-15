@@ -217,7 +217,9 @@ angular.module('switchTabsAppPublic')
     }
 
 
-
+    $scope.getPartialSrc = function(questionType) {
+      return 'survey/partials/question-' + questionType + '.html';
+    };
 
     //Remove loader once the page is loaded
     $scope.$on('$viewContentLoaded', function() {

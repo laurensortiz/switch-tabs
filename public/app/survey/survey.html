@@ -4,29 +4,8 @@
     <div class="question">
       <h2>{{question.question}}</h2>
     </div>
+    <div class="customer-answer" ng-include="getPartialSrc(question.questionType)"></div>
 
-
-    <div class="customer-answer" ng-show="question.questionType === 'multiple'">
-      <div class="answer-options">
-        <a class="excellent animated zoomIn" data-answer="excelente" ng-click="saveAnswers(question.id,'excelente')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-        <a class="good animated zoomIn" data-answer="bueno" ng-click="saveAnswers(question.id,'bueno')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-        <a class="regular animated zoomIn" data-answer="regular" ng-click="saveAnswers(question.id,'regular')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-        <a class="bad animated zoomIn" data-answer="malo" ng-click="saveAnswers(question.id,'malo')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-      </div>
-
-    </div>
-    <div class="customer-answer" ng-show="question.questionType === 'polar'">
-      <div class="answer-options">
-        <a class="excellent animated zoomIn" data-answer="si" ng-click="saveAnswers(question.id,'si')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-        <a class="bad animated zoomIn" data-answer="no" ng-click="saveAnswers(question.id,'no')"><i class="eye left"></i><i class="eye right"></i><i class="mouth"></i></a>
-      </div>
-    </div>
-    <div class="customer-answer" ng-show="question.questionType === 'genero'">
-      <div class="answer-options">
-        <a class="gender g-f animated zoomIn" data-answer="mujer" ng-click="saveAnswers(question.id,'mujer')"><i class="fa fa-female gender"></i></a>
-        <a class="gender g-m animated zoomIn" data-answer="hombre" ng-click="saveAnswers(question.id,'hombre')"><i class="fa fa-male gender"></i></a>
-      </div>
-    </div>
   </div>
   <div class="step thanks" ng-class="{current:pollCompleted}">
     <div class="thanksTxt">
