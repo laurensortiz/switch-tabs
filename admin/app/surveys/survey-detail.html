@@ -3,7 +3,9 @@
   <header>
     <h2>{{surveyInfo.name}}</h2>
     <h4>{{customerInfo.name}}</h4>
-    <span class="bubble-results"><i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}</span>
+    <span class="bubble-results"><i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}} <span ng-show="answerByLocatonSize">
+               / <i class="fa fa-filter"></i> {{answerByLocatonSize}}
+            </span></span>
   </header>
   <div class="main-block">
     <div class="col-3-4">
@@ -14,7 +16,7 @@
         <div class="container-fluid text-a-c">
           <p>Por tienda:</p>
           <ul class="filter-group">
-            <li ng-repeat="location in surveyLocation"><label for="location{{location.id}}"><input id="location{{location.id}}" type="checkbox" ng-model="filterLocation.Selected" ng-change="filterLocationSelected(location.id)"/>{{location.store}} <span>{{location.area}}</span></label></li>
+            <li ng-repeat="location in surveyLocation"><label for="location{{location.id}}"><input id="location{{location.id}}" type="checkbox" ng-model="location.Selected" ng-change="filterLocationSelected(location.id)"/>{{location.store}} <span>{{location.area}}</span></label></li>
           </ul>
           <p>Por respuesta:</p>
 
@@ -27,15 +29,22 @@
     <div class="col-1-4 aside">
       <div class="box-cont no-p">
         <div class="info-item">
-          <h4>Creada</h4>
+          <h4><i class="fa fa-calendar"></i> Creada</h4>
           <div class="container-fluid text-a-c">
-            <i class="fa fa-calendar"></i> {{surveyInfo.Date}}
+             {{surveyInfo.Date}}
           </div>
         </div>
-        <div class="info-item">
-          <h4>Respuestas</h4>
+        <div class="info-item answers-number">
+          <h4><i class="fa fa-bullhorn"></i> Respuestas</h4>
           <div class="container-fluid text-a-c">
-            <i class="fa fa-bullhorn"></i> {{surveyInfo.numberAnswers}}
+             {{surveyInfo.numberAnswers}}
+            / <i class="fa fa-filter"></i> {{answerByLocatonSize}}
+          </div>
+        </div>
+        <div class="info-item export-excel">
+          <h4><i class="fa fa-table"></i> Exportar</h4>
+          <div class="container-fluid text-a-c">
+             <button class="btn green-th" ng-click="exportExcel()">Resultados</button>
           </div>
         </div>
 
@@ -54,24 +63,33 @@
       <thead>
       <th ng-repeat="question in questions">{{question.question}}</th>
       <th><i class="fa fa-calendar"></i> Fecha de Registro</th>
+      <th><i class="fa fa-clock-o"></i> Hora de Registro</th>
       </thead>
       <tbody>
       <tr ng-repeat="answers in $data | filter:searchText">
           <td ng-repeat="answer in answers.answers">{{answer.answer}} {{getObj(answers.answers)}}</td>
-          <td>{{answers.date}}</td>
+          <td>{{answers.date | date:'shortDate'}}</td>
+          <td>{{answers.time | date : 'h:mma'}}</td>
         </tr>
       </tbody>
     </table>
 
   </div>
 
-  <div class="box-cont survey-container">
+  <div class="box-cont survey-container no-p chart">
+    <h4>Gráfica de respuestas</h4>
     <div class="chart-info">
       <ul>
-        <li ng-repeat="chartInfo in chartData"> <span style="color:{{chartInfo.color}}"><i class="fa fa-pie-chart"></i> {{chartInfo.value}}</span> {{chartInfo.label}}</li>
+        <li ng-repeat="chartInfo in chartDataPolar"> <span style="color:{{chartInfo.color}}"><i class="fa fa-pie-chart"></i> {{chartInfo.value}}</span> {{chartInfo.label}}</li>
       </ul>
     </div>
     <canvas id="surveyChart">
+    </canvas>
+  </div>
+
+  <div class="box-cont survey-container no-p chart">
+    <h4>Gráfica de respuestas por día</h4>
+    <canvas id="surveyChartPerDay">
     </canvas>
   </div>
 </div>

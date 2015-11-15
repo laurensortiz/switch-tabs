@@ -169,6 +169,16 @@
   }
 }
 
+.container-fluid{
+  i{
+    color: #bbb;
+  }
+}
+
+.green-th{
+  color: #fff;
+}
+
 form{
 
   input[type="text"]{
@@ -176,7 +186,9 @@ form{
   }
 
 }
-
+.answers-number{
+  display: none;
+}
 
 @media print {
   main{
@@ -185,8 +197,12 @@ form{
   .main-content{
     padding-top: 0;
   }
-  .main-aside, .top-nav, .bubble-results,.filter, .ng-table-counts, .add-btn{
+  .main-aside, .top-nav, .bubble-results,.filter, .ng-table-counts, .add-btn, .export-excel{
     display: none;
+  }
+
+  .chart{
+    page-break-inside: avoid;
   }
 
   .aside{
@@ -197,6 +213,10 @@ form{
       width: 50%;
       float: left;
     }
+  }
+
+  .answers-number{
+    display: inline-block;
   }
 
   .box-cont{
