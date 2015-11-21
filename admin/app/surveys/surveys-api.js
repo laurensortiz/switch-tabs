@@ -112,7 +112,6 @@ angular.module('switchTabsAppAdmin')
         method: 'GET',
         url: switch_tabs_config.api_server + 'survey/questions/' + surveyID
       }).then(function (response) {
-        console.log(response);
         return response;
       });
       return promise;

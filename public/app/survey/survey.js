@@ -102,7 +102,6 @@ angular.module('switchTabsAppPublic')
         $scope.questions = questions.data;
         $scope.numberOfQuestions = questions.data.length;
 
-        console.log($scope.questions);
       });
       
 
@@ -209,6 +208,10 @@ angular.module('switchTabsAppPublic')
       if($scope.currentStep ===  $scope.numberOfQuestions + 1){
 
         $scope.pollCompleted = true;
+
+	      console.log('===== * =====');
+	      console.log($scope.saveAnswer);
+	      console.log('===== * =====');
 
         surveys.saveAnswers($scope.saveAnswer).then(function(data){
           resetSurvey(3000);

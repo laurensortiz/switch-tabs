@@ -96,6 +96,8 @@ angular.module('switchTabsAppAdmin')
 
 
       $scope.answers = result;
+
+
       $scope.surveyInfo.numberAnswers = $scope.answers.length;
 
       if ( result.length ){
@@ -110,12 +112,17 @@ angular.module('switchTabsAppAdmin')
       var group = _.groupBy(_.flatten(_.pluck(_.map($scope.answers),'answers')), 'answer');
 
       _.forEach($scope.answers, function(answer){
+
+	      var dateTime = new Date(answer['date']).addHours(1);
+	      var formatDate = ($scope.formatDate(dateTime)).split(' ');
+	      
         answer.dateTime = answer['date'];
         answer.locationID = _.parseInt(answer.answers[0]['locationID']);
-        answer['date'] = answer.dateTime.split(' ')[0];
-        answer.time = answer.dateTime.split(' ')[1];
+        answer['date'] = formatDate[0];
+        answer.time = formatDate[2] +' '+ formatDate[3];
 
       });
+
 
       $scope.chartDataPolar = _.transform(group, function (result, val, key) {
 
@@ -213,11 +220,6 @@ angular.module('switchTabsAppAdmin')
         data : answersPerDay
       });
 
-
-
-
-
-
       new Chart(ctxLine).Line(chartDataLine, optionschartLine);
 
     });
@@ -228,14 +230,15 @@ angular.module('switchTabsAppAdmin')
         page : 1,
         count : 20,
         sorting : {
-          date : 'desc'
+	        dateTime : 'desc'
         },
         filter : {
           name : ''
         }
       }, {
         defaultSort : 'desc',
-        data : data
+        data : data,
+	      counts : [10, 50, 100, 1000, 5000]
       });
     };
 
@@ -261,6 +264,17 @@ angular.module('switchTabsAppAdmin')
         listAnswers ($scope.answers);
       }
     };
+
+		$scope.formatDate = function (date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var ampm = hours >= 12 ? 'pm' : 'am';
+			hours = hours % 12;
+			hours = hours ? hours : 12; // the hour '0' should be '12'
+			minutes = minutes < 10 ? '0'+minutes : minutes;
+			var strTime = hours + ':' + minutes + ' ' + ampm;
+			return  date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + "  " + strTime;
+		};
 
     $scope.printReport = function(){
       $timeout(function() {
