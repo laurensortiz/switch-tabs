@@ -1,6 +1,6 @@
 .animated {
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: 0s;
+  animation-duration: 0s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -101,20 +101,20 @@
   animation-name: zoomIn;
 
   &.excellent{
-    -webkit-animation-duration: .5s;
-    animation-duration: .5s;
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
   }
   &.good{
-    -webkit-animation-duration: .7s;
-    animation-duration: .7s;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
   }
   &.regular{
-    -webkit-animation-duration: .9s;
-    animation-duration: .9s;
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
   }
   &.bad{
-    -webkit-animation-duration: 1.1s;
-    animation-duration: 1.1s;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
   }
 }
 
